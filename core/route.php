@@ -3,6 +3,7 @@ class Route
 {
 	static function start()
 	{
+		$registry = Preferences::getInstance();
 		// контроллер и действие по умолчанию
 		$controller_name = 'Main';
 		$action_name = 'index';
@@ -21,15 +22,15 @@ class Route
 		$action_name = 'action_'.$action_name;
 		// подцепляем файл с классом модели (файла модели может и не быть)
 		$model_file = strtolower($model_name).'.php';
-		$model_path = "application/models/".$model_file;
+		$model_path = "models/".$model_file;
 		if(file_exists($model_path)){
-			include "application/models/".$model_file;
+			include "models/".$model_file;
 		}
 		// подцепляем файл с классом контроллера
 		$controller_file = strtolower($controller_name).'.php';
-		$controller_path = "application/controllers/".$controller_file;
+		$controller_path = "controllers/".$controller_file;
 		if(file_exists($controller_path)){
-			include "application/controllers/".$controller_file;
+			include "controllers/".$controller_file;
 		}	else{
 			Route::ErrorPage404();
 		}

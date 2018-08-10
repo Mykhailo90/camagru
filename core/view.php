@@ -29,7 +29,7 @@ class View
   }
   */
 
-    include 'application/views/'.$template_view;
+    include 'views/'.$template_view;
   }
 }
 
