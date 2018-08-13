@@ -1,31 +1,40 @@
 <?php
 
-ini_set('display_errors', 1);
-// разделитель для путей к файлам
-define ('DS', DIRECTORY_SEPARATOR);
+require_once 'aplication/dev.php';
+
+use core\Router;
+use aplication\Helper;
+
 // путь к корневой папке сайта
 $sitePath = realpath(dirname(__FILE__) . DS);
-define ('SITE_PATH', $sitePath);
-// путь к папке c классами для автозагрузки
-define ('APP', 'aplication');
+define ('ROOT', $sitePath);
 
-function __autoload($class_name){
-  $filename = strtolower($class_name) . '.php';
-  $file = SITE_PATH . DS . APP . DS . $filename;
-  if (file_exists($file) == false){
-    return false;
-  }
-  include ($file);
-}
+spl_autoload_register(function ($class) {
+  $path = str_replace('\\', '/', $class);
+  $path .= '.php';
+  if (file_exists($path))
+    require $path;
+});
 
+session_start();
 Helper::init();
-require_once 'core/model.php';
-require_once 'core/view.php';
-require_once 'core/controller.php';
-require_once 'core/route.php';
+$router = new Router;
+$router->run();
 
 
-Route::start();
+// $routes = ROOT . '/config/routes.php';
+// Helper::init();
+// require_once 'core/model.php';
+// require_once 'core/view.php';
+// require_once 'core/controller.php';
+// require_once 'core/route.php';
+
+// $registry = Preferences::getInstance();
+ // $router = new route($routes);
+// $router->setPath (ROOT . '/controllers');
+// $registry->setProperty('router', $router);
+// $router->delegate();
+ // $router->start();
 // $password = password_hash($password, PASSWORD_DEFAULT);
 
  ?>

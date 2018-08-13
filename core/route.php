@@ -1,55 +1,67 @@
 <?php
-class Route
-{
-	static function start()
-	{
-		$registry = Preferences::getInstance();
-		// контроллер и действие по умолчанию
-		$controller_name = 'Main';
-		$action_name = 'index';
-		$routes = explode('/', $_SERVER['REQUEST_URI']);
-		// получаем имя контроллера
-		if (!empty($routes[1])){
-			$controller_name = $routes[1];
-		}
-		// получаем имя экшена
-		if (!empty($routes[2])){
-			$action_name = $routes[2];
-		}
-		// добавляем префиксы
-		$model_name = 'Model_'.$controller_name;
-		$controller_name = 'Controller_'.$controller_name;
-		$action_name = 'action_'.$action_name;
-		// подцепляем файл с классом модели (файла модели может и не быть)
-		$model_file = strtolower($model_name).'.php';
-		$model_path = "models/".$model_file;
-		if(file_exists($model_path)){
-			include "models/".$model_file;
-		}
-		// подцепляем файл с классом контроллера
-		$controller_file = strtolower($controller_name).'.php';
-		$controller_path = "controllers/".$controller_file;
-		if(file_exists($controller_path)){
-			include "controllers/".$controller_file;
-		}	else{
-			Route::ErrorPage404();
-		}
-		// создаем контроллер
-		$controller = new $controller_name;
-		$action = $action_name;
-		if(method_exists($controller, $action)){
-			// вызываем действие контроллера
-			$controller->$action();
-		}	else {
-			Route::ErrorPage404();
-		}
-	}
+class Route{
+// Хранит конфигурацию маршрутов.
+	private $routes;
+  function __construct($routesPath){
+// Получаем конфигурацию из файла.
+    $this->routes = include($routesPath);
+  }
 
-	function ErrorPage404(){
-      $host = 'http://'.$_SERVER['HTTP_HOST'].'/';
-      header('HTTP/1.1 404 Not Found');
-		  header("Status: 404 Not Found");
-		  header('Location:'.$host.'404');
+// Метод получает URI. Несколько вариантов представлены для надёжности.
+  function getURI(){
+    if(!empty($_SERVER['REQUEST_URI'])) {
+      return trim($_SERVER['REQUEST_URI'], '/');
     }
+    if(!empty($_SERVER['PATH_INFO'])) {
+      return trim($_SERVER['PATH_INFO'], '/');
+    }
+    if(!empty($_SERVER['QUERY_STRING'])) {
+      return trim($_SERVER['QUERY_STRING'], '/');
+    }
+  }
+
+  function start(){
+  // Получаем URI.
+  $uri = $this->getURI();
+  // Пытаемся применить к нему правила из конфигуации.
+  foreach($this->routes as $pattern => $route){
+  // Если правило совпало.
+  if(preg_match("~$pattern~", $uri)){
+  // Получаем внутренний путь из внешнего согласно правилу.
+    $internalRoute = preg_replace("~$pattern~", $route, $uri);
+		// echo "$internalRoute";
+		// exit();
+	// Разбиваем внутренний путь на сегменты.
+    $segments = explode('/', $internalRoute);
+  // Первый сегмент — контроллер.
+    $controller = ucfirst(array_shift($segments)).'Controller';
+  // Второй — действие.
+    $action = 'action_'.ucfirst(array_shift($segments));
+  // Остальные сегменты — параметры.
+    $parameters = $segments;
+ // Подключаем файл контроллера, если он имеется
+    $controllerFile = ROOT.'/controllers/'.$controller.'.php';
+    if(file_exists($controllerFile)){
+      include($controllerFile);
+    }
+ // Если не загружен нужный класс контроллера или в нём нет
+// нужного метода — 404
+// echo "$controllerFile";
+// echo "<br>";
+// echo "$action";
+// echo "<br>";
+// exit();
+    if(!is_callable(array($controller, $action))){
+	      header("HTTP/1.0 404 Not Found");
+        return;
+    }
+// Вызываем действие контроллера с параметрами
+	$obj = new $controller($action, $parameters);
+    // call_user_func_array(array($controller, $action), $parameters);
+    }
+  }
+// Ничего не применилось. 404.
+  header("HTTP/1.0 404 Not Found");
+    return;
+  }
 }
-?>

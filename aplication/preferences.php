@@ -2,6 +2,8 @@
 /**
  * Класс для создания единственного объкта с "глобальными переменными"
  */
+namespace aplication;
+
 class Preferences{
   // Переменная для объекта хранения глобальных переменных
   private static $instance;
@@ -29,7 +31,7 @@ class Preferences{
   public function changeProperty($key, $val){
     $this->props[$key] = $val;
   }
-  // Метод для удаления пары ключ-значение 
+  // Метод для удаления пары ключ-значение
   public function removeProperty($key, $val){
     unset($this->props[$key]);
   }

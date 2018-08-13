@@ -6,6 +6,12 @@
   <link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
 <body>
+	<header>
+		<p>Hello, my friend</p>
+	</header>
+
 	<?php include 'views/'.$content_view; ?>
+
+
 </body>
 </html>

@@ -1,13 +1,30 @@
 <?php
+
+namespace core;
+use core\View;
+use models\Main;
+
 abstract class Controller {
 
   public $model;
   public $view;
+  public $route;
 
-  function __construct(){
-    $this->view = new View();
+  function __construct($route){
+    $this->route = $route;
+    $this->view = new View($route);
+    $this->model = $this->loadModel($this->route['controller']);
   }
 
-  abstract function action_index();
+
+  public function loadModel($name){
+      $path = 'models\\'.ucfirst($name);
+
+      if (class_exists($path)){
+        return new $path();
+      }
+  }
+
+  abstract function indexAction();
 }
 ?>

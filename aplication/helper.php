@@ -2,6 +2,10 @@
   /**
    * Сохраняем идентификатор доступа к Базе Данных
    */
+namespace aplication;
+use PDO;
+use aplication\Preferences;
+
   class Helper
   {
     public static function init(){
