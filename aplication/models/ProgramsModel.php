@@ -35,7 +35,7 @@ class ProgramsModel extends Model
         // delete the variables
         unset($result, $query);
 
-        // запрос в базу данных для получения данных для станицы "Программы"
+        // запрос в базу данных для получения данных для страницы "Программы"
        // request to the database to retrieve data for the "Programs" page
        // debug($arg);
        $arg = sprintf("CALL programs ('%s')", $arg);

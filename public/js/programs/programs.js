@@ -10,11 +10,11 @@ window.onload = function() {
       request.open('POST', url, true);
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       request.send('page=' + page_number);
-          request.onreadystatechange = function () {
-          if (request.readyState == 4 && request.status === 200) {
-            element.classList.add("pag_color");
-          }
+      request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status === 200) {
+          element.classList.add("pag_color");
+        }
       }
-  });
+    });
   });
 };
