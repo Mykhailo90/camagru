@@ -3,7 +3,7 @@ footer{
   background-color:rgba(17,28,36,1);
   color:white;
   box-sizing:border-box;
-  padding-top:30px;
+  /* padding-top:30px; */
 }
 footer svg{
   display:block;
@@ -32,14 +32,35 @@ footer a{
 footer a:hover{
   color:white;
 }
-/* footer li:before{
-  display:none;
-} */
-.copyrights{font-size:12px;}
+
+footer>.frame{
+  display:flex;
+  flex-wrap: wrap;
+}
+.frame .frame_left{
+  width: 50%;
+}
+.frame .frame_right{
+  width: 50%;
+}
+.footer_blocks>ul{
+  display:flex;
+  flex-wrap: wrap;
+}
+.f_contacts{
+  width: 100%;
+}
+
+ .copyrights{
+   font-size:12px;
+ }
 
 footer .f_contacts{
   display:flex;
   align-items:center;
+}
+.footer_blocks{
+  width: 270px;
 }
 footer .f_contacts > div > svg{
   padding-right:20px;
@@ -63,7 +84,6 @@ footer h2{
   margin:0px 0 30px 0;
 }
 footer .copyrights{
-  padding-top:30px;
   border-top:1px solid rgba(255,255,255,0.2);
 }
 footer .copyrights>p{
@@ -84,56 +104,44 @@ footer h2{
 footer .copyrights{
   padding-top:50px;
 }
-/* footer.frame{
-  background-color: red;
-  display: flex;
-  justify-content:space-between;
-} */
-footer>.frame{
-  display:flex;
-  justify-content:space-between;
-  padding-bottom:50px;
-}
-.frame div{
-  flex: 1;
-}
-.frame_left{
-  display: flex;
-}
-.frame_left div{
-  min-width: 240px;
-  flex: 1;
-}
-.frame_right{
-  display: flex;
-}
-.frame_right .footer_blocks{
-  min-width: 240px;
-  flex: 1;
-}
-/*footer>.frame_right{
-  background-color: red;
-} */
-/* .footer_blocks_0{
-  width:25%;
-} */
-.footer_blocks_1{
+
+.footer_blocks{
   display:block;
-  width:25%;
   padding: 0 1% 0 1%;
   box-sizing: border-box;
 }
-footer li{font-size:16px;}
-/*
 
-
-@media all and (min-width: 375px) and (max-width: 1023px){}
-@media all and (min-width: 1024px) and (max-width: 1279px){}
-@media all and (min-width: 1280px) and (max-width: 1599px){}
-@media all and (min-width: 1600px){
-
+footer li{
+  font-size:16px;
 }
 
-@media (min-width: 1200px) {
-    footer h2{font-size:18px;}
-} */
+.frame .frame_left{
+  display: flex;
+  justify-content:center;
+}
+.frame .frame_right{
+  display: flex;
+  justify-content:center;
+}
+
+@media (max-width: 1200px) {
+  footer li {
+      margin: 10px 0 10px 0;
+  }
+  .frame .frame_left{
+    width: 100%;
+  }
+  .frame .frame_right{
+    width: 100%;
+    margin-top: 30px;
+  }
+
+}
+  @media (max-width: 610px) {
+    .frame .frame_right{
+      display: none;
+    }
+    .frame_left>:nth-child(2){
+      display: none;
+    }
+}

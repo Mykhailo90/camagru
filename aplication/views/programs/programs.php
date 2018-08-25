@@ -18,37 +18,27 @@
               <label for="direction">Тип <em>*</em></label>
                 <select>
                   <option selected disabled>Выберите Тип</option>
-                  <option value="Модульная программа">Модульная программа</option>
-                  <option value="Тренинг">Тренинг</option>
-                  <option value="Мастер-класс">Мастер-класс</option>
-                  <option value="Видео/Электронный курс">Видео/Электронный курс</option>
-                  <option value="Консалтинговая услуга">Консалтинговая услуга</option>
-                  <option value="Международные программы">Международные программы</option>
-                  <option value="Программы партнеров Академии ДТЭК">Программы партнеров Академии ДТЭК</option>
+                  <?php foreach ($filterType as $value): ?>
+                    <option value="<?php echo $value['id']; ?>"><?php echo $value['type_name']; ?></option>
+                  <?php endforeach; ?>
                 </select>
             </div>
             <div class="r">
               <label for="data">Для кого</label>
               <select>
                 <option selected disabled>Выберите направление</option>
-                <option value="HR">HR</option>
-                <option value="Руководители/Владельцы бизнеса">Руководители/Владельцы бизнеса</option>
-                <option value="Маркетолог">Маркетолог</option>
-                <option value="Тренер">Тренер</option>
+                <?php foreach ($filterForWhom as $value): ?>
+                  <option value="<?php echo $value['id_direction'] ?>"><?php echo $value['title'] ?></option>
+                <?php endforeach; ?>
               </select>
             </div>
             <div class="r">
               <label for="direction">Тематика</label>
               <select>
                 <option selected disabled>Сфера применения</option>
-                <option value="Коммуникации">Коммуникации</option>
-                <option value="Продажи">Продажи</option>
-                <option value="Личное развитие">Личное развитие</option>
-                <option value="HR">HR</option>
-                <option value="Маркетинг">Маркетинг</option>
-                <option value="Тимбилдинг">Тимбилдинг</option>
-                <option value="Инновационность">Инновационность</option>
-                <option value="Менеджмент">Менеджмент</option>
+                <?php foreach ($filterSubjects as $val): ?>
+                  <option value="<?php echo $val['id'] ?>"><?php echo $val['subject_name'] ?></option>
+                <?php endforeach; ?>
               </select>
             </div>
 
@@ -56,6 +46,9 @@
               <label for="data">Куратор</label>
               <select>
                 <option selected disabled>Укажите тренера</option>
+                <?php foreach ($filterTrainer as $val): ?>
+                  <option value="<?php echo $val['id'] ?>"><?php echo $val['trener_name'] ?></option>
+                <?php endforeach; ?>
               </select>
             </div>
             <div class="r">
@@ -95,7 +88,6 @@
   </section>
 
   <section class="prog_list">
-
       <?php foreach ($programs as $value) {?>
         <div class='prog_cards'>
         <img class="prog_image" src="../../../public/img/corporate.jpg" alt="f1">
