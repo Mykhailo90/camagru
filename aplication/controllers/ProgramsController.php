@@ -24,7 +24,7 @@ class ProgramsController extends Controller{
     function listAction(){
       $title = 'DTEK Academy';
       $data = $this->model->get_data($this->params['action']);
-      debug($data);
+      // debug($data);
       if (!isset($_POST['page'])) {
             $current_page = 1;
       }
