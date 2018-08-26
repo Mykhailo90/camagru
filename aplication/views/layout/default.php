@@ -130,7 +130,7 @@
                 <section class="menu menu--off">
                     <?php foreach($navMenu as $item) { ?>
                         <div>
-                            <a href="<?php echo $item['path_to_program']; ?>"><?php echo $item['title']; ?></a>
+                            <a href="/<?php echo $item['path_to_program']; ?>"><?php echo $item['title']; ?></a>
                         </div>
                     <?php } ?>
                 </section>
@@ -154,7 +154,7 @@
         <ul class="main-menu">
           <?php foreach($navMenu as $item) { ?>
           <li>
-            <a href="<?php echo $item['path_to_program']; ?>"><?php echo $item['title']; ?></a>
+            <a href="/<?php echo $item['path_to_program']; ?>"><?php echo $item['title']; ?></a>
           </li>
           <?php } ?>
         </ul>
@@ -238,9 +238,9 @@
               <div class="footer_blocks">
                   <h2>Программы обучения</h2>
                   <ul>
-                      <li class="f_contacts"><a href="programs/module_programs/">Долгосрочные программы</a></li>
-                      <li class="f_contacts"><a href="programs/trenings/">Мастер классы</a></li>
-                      <li class="f_contacts"><a href="programs/team_buildings/">Тимбилдинг</a></li>
+                      <li class="f_contacts"><a href="/programs/module_programs/">Долгосрочные программы</a></li>
+                      <li class="f_contacts"><a href="/programs/trenings/">Мастер классы</a></li>
+                      <li class="f_contacts"><a href="/programs/team_buildings/">Тимбилдинг</a></li>
                   </ul>
               </div>
               <div class="footer_blocks">
