@@ -25,10 +25,10 @@ Class ParentPath {
 // Получаем указатель на соединение с базой данных
 // We get a pointer to db connection
     $db = $obj->getProperty('DB');
-    
+
 // Делаем запрос к базе данных и возвращаем результат
 // Make the query to the database and return the result
-    $prepare = $db->prepare('CALL path_to_program ()');
+    $prepare = $db->prepare('CALL path_in_program ()');
     $prepare->execute();
     return $prepare->fetchAll(PDO::FETCH_COLUMN);
   }

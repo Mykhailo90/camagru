@@ -67,7 +67,7 @@ class Router {
 
     //Дефолтное значение для имени метода
     //The default value for the method name
-    $action_def = 'list';
+    $action_def = 'index';
 
     // Разбиваем путь на массив по разделителю
     // Split the path to the array by separator

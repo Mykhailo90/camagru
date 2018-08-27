@@ -6,9 +6,6 @@
     public function __construct($params){
       $this->params=$params;
     }
-	   abstract public function get_data($arg = '');
-     public function get_final_page($arg="", $param="") {
-       //
-     }
+	  abstract public function get_data();
 }
 ?>

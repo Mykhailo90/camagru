@@ -21,8 +21,8 @@ class MainController extends Controller{
 
 // Метод для получения данных необходимых для отображения главной страницы
 // Method for getting the data required to display the main page
-    function listAction(){
-			$title = 'DTEK Academy';
+    function indexAction(){
+			$title = 'Camagru';
       $data = $this->model->get_data();
       $this->view->render($title, $data);
     }
