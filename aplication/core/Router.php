@@ -38,7 +38,6 @@ class Router {
     // Обозначаем URL как регулярное выражение
     // Denote URL as regular expression
       $url = '#^'.$url.'$#';
-
       foreach ($this->routes as $value) {
     // Если найдено вхождение вызывается функция для определения параметров
     // имя контроллера, имя метода и параметры
@@ -50,6 +49,10 @@ class Router {
         return true;
       }
     }
+    $this->params['route'] = 'Error_404';
+    $this->params['controller_name'] = 'Error_404';
+    $this->params['action'] = 'index';
+    $this->params['parameters'] = "";
     return false;
   }
 
@@ -94,43 +97,36 @@ class Router {
     $this->params['controller_name'] = $controller_name;
     $this->params['action'] = $action;
     $this->params['parameters'] = $parameters;
+
   }
 
     public function run(){
 
   // Проверяем вхождение введенного URL в массив дозволенных адресов
   // Сhecks the entered URL in an array of allowed addresses
-      if($this->match()){
+    $this->match();
+
   // Определяем путь к контроллеру
   // Determine the path to the controller
-        $path = ROOT.'/aplication/controllers/'.ucfirst($this->params['controller_name']).'Controller.php';
-        if (file_exists($path)){
-  // Если путь найден - определяем имя метода
+    $path = ROOT.'/aplication/controllers/'.ucfirst($this->params['controller_name']).'Controller.php';
+
+  //путь найден - определяем имя метода
   // If the path is found, define the method name
-          $action = $this->params['action'].'Action';
-          $class_name = 'aplication\controllers\\' . ucfirst($this->params['controller_name']).'Controller';
+    $action = $this->params['action'].'Action';
+    $class_name = 'aplication\controllers\\' . ucfirst($this->params['controller_name']).'Controller';
   // Проверяем наличие необоходимого метода в классе
   // Сheck the necessary method in the class
-          if (method_exists($class_name, $action)){
-  // Если метод найден создаем экземпляр класса контроллера
-  // Вызываем необходимый метод
-  // If the method is found, create an object of the controller class
-  // Call the required method
-            $controller = new $class_name($this->params);
-            $controller->$action();
-          }
-          else {
-// Если не найден класс, метод или файл - вызываем отображение ошибки
-// If no class, method, or file is not found - call the error display
-            View::errorCode(404);
-          }
-        }else {
-          View::errorCode(404);
-        }
-      }
-      else {
-        View::errorCode(404);
-      }
+    if (!method_exists($class_name, $action)){
+      $this->params['route'] = 'Error_404';
+      $this->params['controller_name'] = 'Error_404';
+      $this->params['action'] = 'index';
+      $this->params['parameters'] = "";
+
+      $action = $this->params['action'].'Action';
+      $class_name = 'aplication\controllers\\' . ucfirst($this->params['controller_name']).'Controller';
     }
+
+    $controller = new $class_name($this->params);
+    $controller->$action();
   }
- ?>
+}

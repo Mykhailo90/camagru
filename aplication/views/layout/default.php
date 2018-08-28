@@ -4,7 +4,9 @@
   <meta charset="utf-8">
   <!--Reset all styles to default-->
   <link rel="stylesheet" type="text/css" href="../../../public/styles/reset.css">
+  <link rel="stylesheet" type="text/css" href="../../../public/styles/default/default.css">
   <link rel="stylesheet" type="text/css" href="../../../public/styles/main/main.css">
+  <link rel="stylesheet" href="../../../public/styles/404_error/404_error.css">
   <title>Camagru</title>
 </head>
 
@@ -12,38 +14,24 @@
   <header>
     <div class="header_container">
       <div class="header_top_menu">
-        <a href="/gellery"><img src="public/img/user-search-icon.png" width="30" height="30"></a>
-        <input type="text" placeholder="user_login" name="search" value="">
-        <!-- <ul class="right-side">
-          <li>
-            <a href="#">
-              <i class="fas fa-globe"></i> RU
-              <i class="fas fa-angle-down"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">Вход</a>
-          </li>
-          <li>
-            <a href="#">Регистрация</a>
-          </li>
-        </ul></div> -->
-      <div class="logo_row">
-        <div class="logo_conteiner">
-          <span id='logo'>Camagru</span>
+        <div class="left_side">
+          <a href="/gallery"><img title="Поиск" src="public/img/search-user.png" width="40" height="40"></a>
+          <input class="header_input" type="text" placeholder="user_login" name="search" value="">
         </div>
-        <div id="video-bg">
-          <video height="100" preload="auto" volume = "0" autoplay="autoplay" loop="loop">
-          <source src="public/img/fire_background_loop2_videvo2.mov" type="video/mp4"></source>
-        </video>
+        <div class="right_side">
+          <a href="/registration"><img title="Регистрация" src="public/img/icon1.png" width="40" height="40"></a>
+          <a href="/autorization"><img title="Авторизация" src="public/img/key.png" width="40" height="40"></a>
+        </div>
       </div>
 
+      <div class="logo_row content_center">
+            <span id='logo'>Camagru</span>
     </div>
-    </div>
+  </div>
   </header>
   <?php echo "$content"; ?>
   <footer class="footer_all">
-    <div class="logo_conteiner">
+    <div class="content_center">
       <a href="https://www.facebook.com/profile.php?id=100001749961535">&copy; msarapii</a>
     </div>
   </footer>
