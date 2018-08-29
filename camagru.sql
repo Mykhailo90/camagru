@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.8.2
+-- https://www.phpmyadmin.net/
 --
--- Хост: localhost
--- Время создания: Авг 28 2018 г., 21:16
--- Версия сервера: 10.0.34-MariaDB-0ubuntu0.16.04.1
--- Версия PHP: 7.0.30-0ubuntu0.16.04.1
+-- Host: localhost:3306
+-- Generation Time: Aug 29, 2018 at 11:18 AM
+-- Server version: 5.7.22
+-- PHP Version: 7.1.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,12 +19,12 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `camagru`
+-- Database: `camagru`
 --
 
 DELIMITER $$
 --
--- Процедуры
+-- Procedures
 --
 CREATE DEFINER=`msarapii`@`localhost` PROCEDURE `path_in_program` ()  BEGIN
 	    SELECT path FROM path;
@@ -33,7 +35,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `effects_img`
+-- Table structure for table `effects_img`
 --
 
 CREATE TABLE `effects_img` (
@@ -42,7 +44,7 @@ CREATE TABLE `effects_img` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `effects_img`
+-- Dumping data for table `effects_img`
 --
 
 INSERT INTO `effects_img` (`id_effect`, `effect_path`) VALUES
@@ -61,7 +63,7 @@ INSERT INTO `effects_img` (`id_effect`, `effect_path`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `gifs`
+-- Table structure for table `gifs`
 --
 
 CREATE TABLE `gifs` (
@@ -72,7 +74,7 @@ CREATE TABLE `gifs` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `img_comments`
+-- Table structure for table `img_comments`
 --
 
 CREATE TABLE `img_comments` (
@@ -86,7 +88,7 @@ CREATE TABLE `img_comments` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `img_likes`
+-- Table structure for table `img_likes`
 --
 
 CREATE TABLE `img_likes` (
@@ -99,7 +101,7 @@ CREATE TABLE `img_likes` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `path`
+-- Table structure for table `path`
 --
 
 CREATE TABLE `path` (
@@ -108,7 +110,7 @@ CREATE TABLE `path` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Дамп данных таблицы `path`
+-- Dumping data for table `path`
 --
 
 INSERT INTO `path` (`id`, `path`) VALUES
@@ -119,7 +121,7 @@ INSERT INTO `path` (`id`, `path`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `test`
+-- Table structure for table `test`
 --
 
 CREATE TABLE `test` (
@@ -128,7 +130,7 @@ CREATE TABLE `test` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `test`
+-- Dumping data for table `test`
 --
 
 INSERT INTO `test` (`id`, `name`) VALUES
@@ -140,7 +142,7 @@ INSERT INTO `test` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `users_images`
+-- Table structure for table `users_images`
 --
 
 CREATE TABLE `users_images` (
@@ -155,7 +157,7 @@ CREATE TABLE `users_images` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `users_info`
+-- Table structure for table `users_info`
 --
 
 CREATE TABLE `users_info` (
@@ -168,30 +170,30 @@ CREATE TABLE `users_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `users_info`
+-- Dumping data for table `users_info`
 --
 
 INSERT INTO `users_info` (`user_id`, `name`, `email`, `user_password`, `user_avatar_path`, `gif_id`) VALUES
 (1, 'msarapii', '0660330233@ukr.net', '$2y$10$gLJBptRbOxSBIXXw.zb.au2Lavhescsq7Dnd4eU57ckyoCRIChEI2', 'u_images/incognito.jpg', NULL);
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `effects_img`
+-- Indexes for table `effects_img`
 --
 ALTER TABLE `effects_img`
   ADD PRIMARY KEY (`id_effect`);
 
 --
--- Индексы таблицы `gifs`
+-- Indexes for table `gifs`
 --
 ALTER TABLE `gifs`
   ADD PRIMARY KEY (`gif_id`);
 
 --
--- Индексы таблицы `img_comments`
+-- Indexes for table `img_comments`
 --
 ALTER TABLE `img_comments`
   ADD KEY `id_sender` (`id_sender`),
@@ -199,7 +201,7 @@ ALTER TABLE `img_comments`
   ADD KEY `id_img` (`id_img`);
 
 --
--- Индексы таблицы `img_likes`
+-- Indexes for table `img_likes`
 --
 ALTER TABLE `img_likes`
   ADD PRIMARY KEY (`like_id`),
@@ -208,76 +210,83 @@ ALTER TABLE `img_likes`
   ADD KEY `img_id` (`img_id`);
 
 --
--- Индексы таблицы `path`
+-- Indexes for table `path`
 --
 ALTER TABLE `path`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `test`
+-- Indexes for table `test`
 --
 ALTER TABLE `test`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `users_images`
+-- Indexes for table `users_images`
 --
 ALTER TABLE `users_images`
   ADD PRIMARY KEY (`img_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Индексы таблицы `users_info`
+-- Indexes for table `users_info`
 --
 ALTER TABLE `users_info`
   ADD PRIMARY KEY (`user_id`),
   ADD KEY `gif_id` (`gif_id`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `effects_img`
+-- AUTO_INCREMENT for table `effects_img`
 --
 ALTER TABLE `effects_img`
   MODIFY `id_effect` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
--- AUTO_INCREMENT для таблицы `gifs`
+-- AUTO_INCREMENT for table `gifs`
 --
 ALTER TABLE `gifs`
   MODIFY `gif_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT для таблицы `img_likes`
+-- AUTO_INCREMENT for table `img_likes`
 --
 ALTER TABLE `img_likes`
   MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT для таблицы `path`
+-- AUTO_INCREMENT for table `path`
 --
 ALTER TABLE `path`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT для таблицы `test`
+-- AUTO_INCREMENT for table `test`
 --
 ALTER TABLE `test`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
--- AUTO_INCREMENT для таблицы `users_images`
+-- AUTO_INCREMENT for table `users_images`
 --
 ALTER TABLE `users_images`
   MODIFY `img_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT для таблицы `users_info`
+-- AUTO_INCREMENT for table `users_info`
 --
 ALTER TABLE `users_info`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- Ограничения внешнего ключа сохраненных таблиц
+-- Constraints for dumped tables
 --
 
 --
--- Ограничения внешнего ключа таблицы `img_comments`
+-- Constraints for table `img_comments`
 --
 ALTER TABLE `img_comments`
   ADD CONSTRAINT `id_img` FOREIGN KEY (`id_img`) REFERENCES `users_images` (`img_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -285,7 +294,7 @@ ALTER TABLE `img_comments`
   ADD CONSTRAINT `id_sender` FOREIGN KEY (`id_sender`) REFERENCES `users_info` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ограничения внешнего ключа таблицы `img_likes`
+-- Constraints for table `img_likes`
 --
 ALTER TABLE `img_likes`
   ADD CONSTRAINT `img_id` FOREIGN KEY (`img_id`) REFERENCES `users_images` (`img_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -293,16 +302,17 @@ ALTER TABLE `img_likes`
   ADD CONSTRAINT `sender_id` FOREIGN KEY (`sender_id`) REFERENCES `users_info` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ограничения внешнего ключа таблицы `users_images`
+-- Constraints for table `users_images`
 --
 ALTER TABLE `users_images`
   ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users_info` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ограничения внешнего ключа таблицы `users_info`
+-- Constraints for table `users_info`
 --
 ALTER TABLE `users_info`
   ADD CONSTRAINT `gif_id` FOREIGN KEY (`gif_id`) REFERENCES `gifs` (`gif_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

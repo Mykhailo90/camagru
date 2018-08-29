@@ -55,21 +55,21 @@ class View
     }
   }
 
-// Функция принимает адрес и осуществляет переход на него
-// The function takes an address URL and moves to it
-
-  public function redirect($url){
-    header('location: '.$url);
-    exit();
-  }
-
-  // Функция принимает код ошибки  и осуществляет переход на страницу отображения
-  // The function takes an error code and moves to the display page
-
-  public static function errorCode($code){
-    http_response_code($code);
-    require ROOT.'/views/errors/'.$code.'.php';
-    exit();
-  }
+// // Функция принимает адрес и осуществляет переход на него
+// // The function takes an address URL and moves to it
+//
+//   public function redirect($url){
+//     header('location: '.$url);
+//     exit();
+//   }
+//
+//   // Функция принимает код ошибки  и осуществляет переход на страницу отображения
+//   // The function takes an error code and moves to the display page
+//
+//   public static function errorCode($code){
+//     http_response_code($code);
+//     require ROOT.'/aplication/views/errors/'.$code.'.php';
+//     exit();
+//   }
 }
 ?>

@@ -12,7 +12,7 @@
     $servername = "127.0.0.1";
     $username = $configs['DB_USER'];
     $password = $configs['DB_PASSWORD'];
-    $db_name = "camagru";
+    $db_name = "camagru42";
 
     try {
 // Подключаемся к mysql данных для создания БД
