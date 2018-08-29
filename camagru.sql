@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 29, 2018 at 11:18 AM
+-- Generation Time: Aug 29, 2018 at 12:09 PM
 -- Server version: 5.7.22
 -- PHP Version: 7.1.19
 
@@ -22,15 +22,7 @@ SET time_zone = "+00:00";
 -- Database: `camagru`
 --
 
-DELIMITER $$
---
--- Procedures
---
-CREATE DEFINER=`msarapii`@`localhost` PROCEDURE `path_in_program` ()  BEGIN
-	    SELECT path FROM path;
-    END$$
 
-DELIMITER ;
 
 -- --------------------------------------------------------
 

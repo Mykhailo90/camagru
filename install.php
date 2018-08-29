@@ -12,7 +12,7 @@
     $servername = "127.0.0.1";
     $username = $configs['DB_USER'];
     $password = $configs['DB_PASSWORD'];
-    $db_name = "camagru42";
+    $db_name = "camagru";
 
     try {
 // Подключаемся к mysql данных для создания БД
@@ -48,6 +48,9 @@
 // Считываем код инициализации в буфер
       $sql = file_get_contents("$db_name.sql");
 // Выполняем запрос на инициализацию
+      $db->exec($sql);
+// Создаем хранимые процедуры
+      $sql = 'CREATE PROCEDURE path_in_program() READS SQL DATA BEGIN SELECT path FROM path; END;';
       $db->exec($sql);
     echo "База данных успешно инсталирована\n";
   }

@@ -5,8 +5,9 @@
   <!--Reset all styles to default-->
   <link rel="stylesheet" type="text/css" href="../../../public/styles/reset.css">
   <link rel="stylesheet" type="text/css" href="../../../public/styles/default/default.css">
+
   <link rel="stylesheet" type="text/css" href="../../../public/styles/main/main.css">
-  <link rel="stylesheet" href="../../../public/styles/404_error/404_error.css">
+  <link rel="stylesheet" type="text/css" href="../../../public/styles/404_error/404_error.css">
   <title>Camagru</title>
 </head>
 
@@ -29,7 +30,9 @@
     </div>
   </div>
   </header>
+  <main class="main_container">
   <?php echo "$content"; ?>
+  </main>
   <footer class="footer_all">
     <div class="content_center">
       <a href="https://www.facebook.com/profile.php?id=100001749961535">&copy; msarapii</a>

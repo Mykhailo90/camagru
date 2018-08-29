@@ -1,6 +1,8 @@
 body{
   max-width: 1400px;
   margin: auto;
+  background-color: black;
+  color: white;
 }
 .header_container{
   display: flex;
@@ -73,12 +75,16 @@ header img{
 #logo{
   font-size: 5vw;
 }
+.main_container{
+  height:65vh;
+}
 
 .footer_all{
   height:8vh;
   width: 100%;
   background-color: black;
   color: white;
+  border-top: 1px solid white;
 }
 footer a{
     text-decoration: none;

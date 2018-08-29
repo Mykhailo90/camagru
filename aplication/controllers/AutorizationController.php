@@ -11,7 +11,7 @@ use aplication\core\View;
 * The class provides the interaction between the model and the display of the main page
 */
 
-class RegistrationController extends Controller{
+class AutorizationController extends Controller{
   function __construct($parameters){
 // Передаем в родительский класс параметры для инициализации модели
 // Pass to the parent class the parameters for initializing the model
