@@ -1,4 +1,12 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['login']) || $_SESSION['login'] == "")
+    {
+      if (isset($_COOKIE['login']))
+        $_SESSION['login'] = $_COOKIE['login'];
+    }
 /*
 * Создаем константу корневой директории.
 *
@@ -15,9 +23,6 @@ define('ROOT', dirname(__FILE__));
 require 'aplication/lib/Dev.php';
 
 use aplication\core\Router;
-
-
-session_start();
 
 /*
 * Создаем объкт маршрутизации и вызываем главный метод.

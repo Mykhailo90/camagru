@@ -11,9 +11,9 @@ class MainModel extends Model
 
     public function get_data()
     {
-        $link = Registry::getInstance()->getProperty('DB');
-        $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+        // $link = Registry::getInstance()->getProperty('DB');
+        // $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // $result = $link->query($query)
 
         // запрос в базу данных для получения данных для навигационного меню
         // query the database to retrieve data for the navigation menu
@@ -140,9 +140,9 @@ class MainModel extends Model
 //
 //         // Формируем массив с полученными данными
 //         // We form an array with the obtained data
-        $allData = array('navMenu' => 'aaa', 'baners' => '$baners', 'direction' => '$direction', 'calendar' => '$calendar',
-            'feedback' => '$feedback', 'popular_programs' => '$popular_programs', 'blog' => '$blog');
+        // $allData = array('navMenu' => 'aaa', 'baners' => '$baners', 'direction' => '$direction', 'calendar' => '$calendar',
+        //     'feedback' => '$feedback', 'popular_programs' => '$popular_programs', 'blog' => '$blog');
 
-        return $allData;
+         return $allData;
     }
 }

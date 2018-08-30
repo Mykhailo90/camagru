@@ -23,6 +23,15 @@ class RegistrationController extends Controller{
 // Method for getting the data required to display the main page
     function indexAction(){
       $title = 'Camagru';
+    if (isset($_POST['login']) && isset($_POST['email']) && isset($_POST['psw'])){
+      $user['login'] = $_POST['login'];
+      $user['email'] = $_POST['email'];
+      $user['psw'] = $_POST['psw'];
+      $data = $this->model->set_user_info($user);
+      return ($data);
+      exit();
+    }
+
       $this->view->render($title);
     }
 //       $title = 'DTEK Academy';
