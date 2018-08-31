@@ -35,16 +35,13 @@ class Router {
     */
     private function match(){
       $url = trim($_SERVER['REQUEST_URI'], '/');
-    // Обозначаем URL как регулярное выражение
-    // Denote URL as regular expression
-      $url = '#^'.$url.'$#';
       foreach ($this->routes as $value) {
     // Если найдено вхождение вызывается функция для определения параметров
     // имя контроллера, имя метода и параметры
 
     //If an occurrence is found, we called  a function to determine the parameters:
     // controller name, method name and other parameters
-      if (preg_match($url, $value, $matches)){
+      if (preg_match($value, $url, $matches)){
         $this->parsing_path($matches[0]);
         return true;
       }
@@ -63,7 +60,6 @@ class Router {
   */
   private function parsing_path($path){
     $route = $path;
-
     //Дефолтное значение для имени контроллера
     //The default value for the controller name
     $controller_name_def = 'main';
@@ -125,7 +121,6 @@ class Router {
       $action = $this->params['action'].'Action';
       $class_name = 'aplication\controllers\\' . ucfirst($this->params['controller_name']).'Controller';
     }
-
     $controller = new $class_name($this->params);
     $controller->$action();
   }

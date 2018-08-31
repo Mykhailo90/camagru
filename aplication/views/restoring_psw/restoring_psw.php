@@ -4,31 +4,28 @@
     <form class="registr_form">
       <div class="container">
         <div class="form_header">
-          <h1>Регистрация</h1>
-          <p id="form_header_text">Пожалуйста, заполните регистрационную форму.</p>
+          <h1>Восстановление пароля</h1>
+          <p id="form_header_text">Внимательно заполните поля, чтобы получить доступ к приложению.</p>
           <hr>
         </div>
         <div class="fields">
-          <label for="user"><b>Логин</b></label>
-          <input id="login" type="text" placeholder="Введите логин" name="login" required>
-
           <label for="email"><b>Электронный адрес</b></label>
           <input id="email" type="text" placeholder="Введите адрес @" name="email" required>
 
-          <label for="psw"><b>Пароль</b></label>
+          <label for="psw"><b>Новый Пароль</b></label>
           <input id="psw" type="password" placeholder="Не менее 6 символов" name="psw" required>
 
           <label for="psw-repeat"><b>Повторите пароль</b></label>
           <input id="psw-repeat" type="password" placeholder="Внимательно!" name="psw-repeat" required>
-          <p>Создавая аккаунт, вы подтверждаете согласие на хранение и использование размещенного контента.</p>
+
           <div class="clearfix">
-            <a href="/"><button type="button" class="cancelbtn">Да ну НАХ...</button></a>
-            <button type="button" class="signupbtn">Регистрация</button>
+            <a href="/autorization"><button type="button" class="cancelbtn">Не надо... Вспомнил!!!)</button></a>
+            <button type="button" class="signupbtn">Отправить запрос!</button>
           </div>
         </div>
 
       </div>
     </form>
   </div>
+
 </div>
-<script src="../../public/js/registration/registration.js"></script>

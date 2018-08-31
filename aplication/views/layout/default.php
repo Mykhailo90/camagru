@@ -1,19 +1,19 @@
 <?php
   $guest = '
-  <a href="/registration"><img title="Регистрация" src="public/img/icon1.png" width="40" height="40"></a>
-  <a href="/autorization"><img title="Авторизация" src="public/img/key.png" width="40" height="40"></a>
+  <a href="/registration"><img title="Регистрация" src="../../public/img/icon1.png" width="40" height="40"></a>
+  <a href="/autorization"><img title="Авторизация" src="../../public/img/key.png" width="40" height="40"></a>
   ';
   $registr_user = '
-  <a href="/my_gallery"><img title="Мои фото" src="public/img/gallery_icon.png" width="40" height="40"></a>
-  <a href="/settings"><img title="Настройки" src="public/img/settings.png" width="40" height="40"></a>
-  <a href="/autorization/unlog"><img title="Выход" src="public/img/login.png" width="40" height="40"></a>
+  <a href="/my_gallery"><img title="Мои фото" src="../../public/img/gallery_icon.png" width="40" height="40"></a>
+  <a href="/settings"><img title="Настройки" src="../../public/img/settings.png" width="40" height="40"></a>
+  <a href="/autorization/unlog"><img title="Выход" src="../../public/img/login.png" width="40" height="40"></a>
   ';
 ?>
 <!DOCTYPE html>
 <html>
   <head>
   <meta charset="utf-8">
-  <link rel="shortcut icon" href="public/img/fav.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../../public/img/fav.png" type="image/x-icon">
   <!--Reset all styles to default-->
   <link rel="stylesheet" type="text/css" href="../../../public/styles/reset.css">
   <link rel="stylesheet" type="text/css" href="../../../public/styles/default/default.css">
@@ -28,7 +28,7 @@
     <div class="header_container">
       <div class="header_top_menu">
         <div class="left_side">
-          <a href="/gallery"><img title="Поиск" src="public/img/search-user.png" width="40" height="40"></a>
+          <a href="/gallery"><img title="Поиск" src="../../public/img/search-user.png" width="40" height="40"></a>
           <input class="header_input" type="text" placeholder="user_login" name="search" value="">
         </div>
         <div class="right_side">

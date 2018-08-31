@@ -142,7 +142,7 @@ class MainModel extends Model
 //         // We form an array with the obtained data
         // $allData = array('navMenu' => 'aaa', 'baners' => '$baners', 'direction' => '$direction', 'calendar' => '$calendar',
         //     'feedback' => '$feedback', 'popular_programs' => '$popular_programs', 'blog' => '$blog');
-
+        $allData['test'] = "test";
          return $allData;
     }
 }

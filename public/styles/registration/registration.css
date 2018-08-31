@@ -23,7 +23,7 @@
     display: inline-block;
     background: #f1f1f1;
 }
-input[type=text]:focus, input[type=password]:focus {
+.registr_form input[type=text]:focus, .registr_form input[type=password]:focus {
     background-color: #ddd;
     outline: none;
 }
@@ -65,6 +65,19 @@ button:hover {
 }
 .error_input{
   border: 3px solid #cc00cc;
+}
+.unvisible{
+  display: none;
+}
+.msg{
+  color: #cc00cc;
+  font-size: 20px;
+  font-style: italic;
+}
+.mgs_ok{
+  color: #2929a3;
+  font-size: 20px;
+  font-style: italic;
 }
 @media screen and (max-width: 300px) {
     .cancelbtn, .signupbtn {

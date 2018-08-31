@@ -15,7 +15,11 @@ class RegistrationController extends Controller{
   function __construct($parameters){
 // Передаем в родительский класс параметры для инициализации модели
 // Pass to the parent class the parameters for initializing the model
-		parent::__construct($parameters);
+		  parent::__construct($parameters);
+      if (isset($_SESSION['login']) && !empty($_SESSION['login']))
+      {
+        header("Location: /");
+      }
 		  $this->view = new View($parameters);
 	 }
 
@@ -34,6 +38,23 @@ class RegistrationController extends Controller{
 
       $this->view->render($title);
     }
+
+    function activateAction(){
+      $title = 'Camagru';
+      if (!empty($this->params['parameters'])){
+        $check_sum = $this->params['parameters'][0];
+        $check_sum = explode("=", $check_sum);
+        $token = $check_sum[1];
+        $data = $this->model->check_token($token);
+
+        if (empty($data)){
+          header("Location: /autorization");
+          exit();
+        }
+          header("Location: /Error_404");
+          exit();
+      }
+  }
 //       $title = 'DTEK Academy';
 //       $data = $this->model->get_data($this->params['action']);
 //       // debug($data);

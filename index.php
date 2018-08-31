@@ -4,8 +4,10 @@ session_start();
 
 if (!isset($_SESSION['login']) || $_SESSION['login'] == "")
     {
-      if (isset($_COOKIE['login']))
+      if (isset($_COOKIE['login']) && isset($_COOKIE['email']) && $_COOKIE['user_id'])
         $_SESSION['login'] = $_COOKIE['login'];
+        $_SESSION['email'] = $_COOKIE['email'];
+        $_SESSION['user_id'] = $_COOKIE['user_id'];
     }
 /*
 * Создаем константу корневой директории.
