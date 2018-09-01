@@ -151,6 +151,7 @@ class RegistrationModel extends Model
         exit();
       }
       $user['token'] = substr(str_shuffle($user['psw']), 0, 10);
+      $user['token'] = str_replace("/", "$", $user['token']);
 
       $link = Registry::getInstance()->getProperty('DB');
       $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -6,6 +6,5 @@
     public function __construct($params){
       $this->params=$params;
     }
-	  abstract public function get_data();
 }
 ?>

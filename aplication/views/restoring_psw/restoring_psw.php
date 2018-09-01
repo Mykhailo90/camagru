@@ -9,17 +9,12 @@
           <hr>
         </div>
         <div class="fields">
+
           <label for="email"><b>Электронный адрес</b></label>
           <input id="email" type="text" placeholder="Введите адрес @" name="email" required>
 
-          <label for="psw"><b>Новый Пароль</b></label>
-          <input id="psw" type="password" placeholder="Не менее 6 символов" name="psw" required>
-
-          <label for="psw-repeat"><b>Повторите пароль</b></label>
-          <input id="psw-repeat" type="password" placeholder="Внимательно!" name="psw-repeat" required>
-
           <div class="clearfix">
-            <a href="/autorization"><button type="button" class="cancelbtn">Не надо... Вспомнил!!!)</button></a>
+            <a href="/autorization"><button id="uncheck" type="button" class="cancelbtn">Ой... Вспомнил!!!)</button></a>
             <button type="button" class="signupbtn">Отправить запрос!</button>
           </div>
         </div>
@@ -29,3 +24,4 @@
   </div>
 
 </div>
+<script src="../../public/js/restoring_psw/restoring_psw.js"></script>
