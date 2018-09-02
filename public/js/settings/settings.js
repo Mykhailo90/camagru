@@ -132,7 +132,6 @@ function ajaxPost(data) {
         request.onreadystatechange = function () {
             if(request.readyState == 4 && request.status == 200) {
               var response = request.responseText;
-              // var for_del = document.querySelector('fields');List.add('unvisible');
               var info = document.querySelector('.response');
               info.innerHTML = response;
             }
@@ -142,8 +141,32 @@ function ajaxPost(data) {
 window.onload = function() {
   var settings = document.querySelector('.change_settings');
   settings.addEventListener('click', function(e){
+
     var form = document.querySelector('#form');
     form.classList.remove("unvisible");
+
+
+    var update = document.querySelector('.signupbtn');
+    update.addEventListener('click', function(e){
+      var res = 0;
+      var err = {value: msg};
+      err.value = '';
+      res += check_login(err);
+      res += check_email(err);
+      res += check_psw(err);
+      if (res != 3){
+        var msg = err.value;
+        alert(msg);
+      }
+      else {
+        var v = document.querySelector('#login').value;
+        var e = document.querySelector('#email').value;
+        var p = document.querySelector('#psw').value;
+        document.querySelector('.fields').classList.add('unvisible');
+        document.querySelector('#form_header_text').classList.add('unvisible');
+        ajaxPost_for_change_settings('login=' + v + '&email=' + e + '&psw=' + p);
+      }
+    });
   });
 
   var notification = document.querySelector('.check_img');
@@ -157,24 +180,4 @@ window.onload = function() {
   ajaxPost_for_del('del_page=' + 'delete');
   });
 
-  var update = document.querySelector('.signupbtn');
-  update.addEventListener('click', function(e){
-    var res = 0;
-    var err = {value: msg};
-    err.value = '';
-    res += check_login(err);
-    res += check_email(err);
-    res += check_psw(err);
-    if (res != 3){
-      var msg = err.value;
-      alert(msg);
-    }
-    else {
-      var v = document.querySelector('#login').value;
-      var e = document.querySelector('#email').value;
-      var p = document.querySelector('#psw').value;
-
-      ajaxPost_for_change_settings('login=' + v + '&email=' + e + '&psw=' + p);
-    }
-  });
 };

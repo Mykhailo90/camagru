@@ -116,13 +116,15 @@ class SettingsModel extends Model
         $link = Registry::getInstance()->getProperty('DB');
         $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "UPDATE users_info SET name=? email=? user_password=? token=? WHERE email=?";
+        $sql = "UPDATE users_info SET name=?,email=?, user_password=?, token=? WHERE email=?";
         $result = $link->prepare($sql);
         $result->execute(array($user['login'], $user['email'], $user['psw'], $user['token'], $_SESSION['email']));
         $msg = "Операция по изменению данных прошла успешно!";
         $_COOKIE['login'] = $_SESSION['login'] = $user['login'];
         $_COOKIE['email'] = $_SESSION['email'] = $user['email'];
-        return ($msg);
+        $msg = "Операция успешна! Изменения вступили в силу!";
+        echo $msg;
+        exit();
     }
 
     private function safety_data($user){
@@ -147,8 +149,8 @@ class SettingsModel extends Model
         // Делаем запрос на select
         $link = Registry::getInstance()->getProperty('DB');
         $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT user_id, name, email, FROM users_info
-                WHERE email = ? AND check_email = 1";
+        $sql = "SELECT * FROM users_info
+                WHERE email = ?";
         $result = $link->prepare($sql);
         $result->execute(array($email));
 
