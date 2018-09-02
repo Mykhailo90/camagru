@@ -44,7 +44,7 @@
       </div>
 
       <div class="logo_row content_center">
-            <span id='logo'>Camagru</span>
+            <a href="/"><span id='logo'>Camagru</span></a>
     </div>
   </div>
   </header>

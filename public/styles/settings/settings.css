@@ -7,6 +7,9 @@ h1{
 h2{
   text-align: center;
 }
+.main_container{
+  min-height: 800px;
+}
 table{
   text-align: center;
   width: 100%;
@@ -30,4 +33,7 @@ table{
 }
 #str_f td{
   height: 130px;
+}
+.footer_all{
+  margin-top: -20px;
 }

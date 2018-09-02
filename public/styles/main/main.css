@@ -1,3 +1,43 @@
+
+.img_list{
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.show{
+  margin-top: 30px;
+  padding: 20px;
+}
+.pagination_list{
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.footer_all{
+  margin-top: 100px;
+}
 .main_container{
-  height:65vh;
+  height: 100%;
+}
+@media only screen and (max-width: 500px) {
+  .header_top_menu{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+  }
+    .left_side{
+      width: 100%;
+      text-align: center;
+    }
+    .right_side{
+      width: 100%;
+      text-align: center;
+    }
+    .main_container{
+      height: 100%;
+    }
 }

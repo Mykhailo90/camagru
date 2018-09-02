@@ -23,8 +23,13 @@ class MainController extends Controller{
 // Method for getting the data required to display the main page
     function indexAction(){
 			$title = 'Camagru';
-      $data = $this->model->get_data();
-      $this->view->render($title, $data);
+      if (isset($_POST['per_page']) && isset($_POST['current_page'])){
+        $data['per_page'] = (int) $_POST['per_page'];
+        $data['current_page'] = (int) $_POST['current_page'];
+        $data = $this->model->get_data($data);
+        exit();
+      }
+      $this->view->render($title);
     }
   }
 ?>
