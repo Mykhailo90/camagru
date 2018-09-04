@@ -1,0 +1,97 @@
+.main_container{
+  width: 90%;
+  margin: auto;
+}
+.foto{
+  width: 70%;
+  margin: auto;
+  margin-top: 10px;
+}
+.info_block, .test{
+  width: 70%;
+  margin-top: 10px;
+  margin: auto;
+
+}
+h2{
+  text-align: center;
+  font-size: 24px;
+  font-style: italic;
+}
+.img_block{
+  width: 25%;
+}
+.text_block{
+  width: 50%;
+}
+
+.like_btn img{
+  width: 70px;
+}
+
+.comment_btn img{
+  width: 70px;
+}
+
+.line{
+  text-align: center;
+}
+#main_img{
+  width: 100%;
+}
+
+#like_gif{
+  width: 100px;
+}
+#com_gif{
+  width: 150px;
+}
+.main_container img:hover{
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  outline: 0px;
+  outline-offset: 0;
+}
+.text_block{
+  text-align: left;
+  vertical-align: top;
+}
+.comment{
+  margin-left: 20px;
+  width: 100%;
+   border-collapse: separate;
+   border-spacing: 7px 11px;
+}
+.test{
+  /* display: none; */
+  text-align: center;
+  text-align: left;
+  vertical-align: top;
+}
+.comment{
+  width: 95%;
+  margin: 0 auto;
+  display: block;
+}
+.comment_card{
+  border: 1px solid blue;
+  display: block;
+  margin-top: 20px;
+}
+.text{
+  height: 100%;
+}
+.unvisible{
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .foto{
+      width: 95%;
+    }
+
+    .info_block {
+       width: 95%;
+    }
+}

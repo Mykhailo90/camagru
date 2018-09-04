@@ -28,9 +28,10 @@ class MainModel extends Model
       $result = $link->prepare($sql);
       $result->execute();
       $res = $result->fetchAll(PDO::FETCH_ASSOC);
-      echo '<div class="img_list">';
+      echo '<div class="img_list" data="'. $total .'">';
+      // Добавить вывод значка лайков и количество для конкретной фото, добавить значок коментов и их количество для зареганых пользователей
       foreach ($res as $val) {
-        echo '<div class="show"><img width="120" id="'.$val['img_id'].'" data="'.$val['user_id'].'" src="'.$val['img_path'].'"></div>';
+        echo '<div class="show" onclick="new_window('.$val['img_id'].')"><img width="120" id="'.$val['img_id'].'" data="'.$val['user_id'].'" src="'.$val['img_path'].'"></div>';
       }
       echo '</div>';
       echo '<div class="pagin_div">';

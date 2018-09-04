@@ -49,18 +49,19 @@
       $end_page = null;
 
     if($this->currentPage > 1){
-        $back = '<li><a class="pag_link"><img id="back" width="50" src="../../public/img/gallery_icon.png" ></a></li>';
+        $back = '<li><a class="pag_link" onclick="prev()"><img id="back" width="50" src="../../public/img/left.png" ></a></li>';
     }
     if ($this->currentPage < $this->countPages){
-        $forward = '<li><a class="pag_link"><img id="forward" width="50" src="../../public/img/gallery_icon.png"></a></li>';
+        $forward = '<li><a class="pag_link" onclick="next()"><img id="forward" width="50" src="../../public/img/right.png"></a></li>';
     }
-    if ($this->currentPage > 3){
-      $start_page = '<li><a class="pag_link"><img id="start_page" width="50" src="../../public/img/gallery_icon.png"></a></li>';
+    if ($this->currentPage > 2){
+      $start_page = '<li><a class="pag_link" onclick="start()"><img id="start_page" width="50" src="../../public/img/start.png"></a></li>';
     }
-    if ($this->currentPage < ($this->countPages - 2)){
-      $end_page = '<li><a class="pag_link"><img id="end_page" width="50" src="../../public/img/gallery_icon.png" ></a></li>';
+    if ($this->currentPage < ($this->countPages - 1)){
+      $end_page = '<li><a class="pag_link" onclick="finish()"><img id="end_page" width="50" src="../../public/img/end.png" ></a></li>';
     }
-    return ('<ul class="pagination_list">' . $start_page . $back . $forward . $end_page .'</ul>');
+    $login = (isset($_SESSION['login'])) ? $_SESSION['login'] : "undef";
+    return ('<ul class="pagination_list">' . $start_page . $back . $forward . $end_page .'</ul><div class="is_reg" id="'.$login . '"></div>');
   }
 
 }
