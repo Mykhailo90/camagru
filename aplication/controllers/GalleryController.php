@@ -27,7 +27,42 @@ class GalleryController extends Controller{
 // Method for getting the data required to display the main page
     function showAction(){
 			$title = 'Camagru';
-      $data['error'] = '404';
+      $img_id = $this->params['parameters'][0];
+      $this->model->check_img($img_id);
+      $data = $this->model->get_data($img_id);
       $this->view->render($title, $data);
+    }
+
+    function show_commentsAction(){
+      if (isset($_POST['img_id']) && isset($_POST['current_page']) && isset($_POST['per_page'])){
+        $data['per_page'] = (int) $_POST['per_page'];
+        $data['current_page'] = (int) $_POST['current_page'];
+        $data['img_id'] = (int) $_POST['img_id'];
+        $data = $this->model->get_last_comments($data);
+        exit();
+      }
+    }
+
+    function add_commentAction(){
+      $title = 'Camagru';
+      if (isset($_POST['img_id']) && isset($_POST['comment_text'])){
+        $comment['img_id'] = $_POST['img_id'];
+        $comment['text'] = $_POST['comment_text'];
+        $comment['user_id'] = $_SESSION['user_id'];
+        // echo $_SESSION['user_id'];
+        $this->model->add_comment($comment);
+        exit();
+      }
+    }
+
+    function add_likeAction(){
+      $title = 'Camagru';
+      if (isset($_POST['img_id'])){
+        $img_id = $_POST['img_id'];
+        // $user_id = $_SESSION['user_id'];
+        // echo $_SESSION['user_id'];
+        $this->model->add_like($img_id);
+        exit();
+      }
     }
   }

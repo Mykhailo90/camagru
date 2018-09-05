@@ -6,11 +6,11 @@
       <td class="img_block"><div class="comment_btn"><a><img src="../../public/img/comments.png" alt="comment"></a></div></td>
     </tr>
     <tr class="line">
-      <td class="img_block"><span id="like_count">33</span></td>
-      <td class="img_block"><span id="comment_count">33</span></td>
+      <td class="img_block"><span id="like_count"><?php echo $count_likes ?></span></td>
+      <td class="img_block"><span id="comment_count"><?php echo $count_comments ?></span></td>
     </tr>
     <tr>
-      <td colspan="2"><img id="main_img" src="../../public/img/15.png" alt="main_foto"></td>
+      <td colspan="2"><img id="main_img" data="<?php echo $img_id ?>" src="<?php echo $img_path ?>" alt="main_foto"></td>
     </tr>
     <tr class="line">
       <td class="img_block"><div class="like_btn"> <img id="like_gif" src="../../public/img/like_enter.gif" alt="L_OK"> </div></td>
@@ -21,13 +21,16 @@
 
 <div id="form_for_comment"  class="info_block, unvisible">
   <h2>Форма отправки комментария</h2>
-    <div class="comment_card">
-       <p><textarea name="comment" cols="50" rows="4"></textarea></p>
+    <div class="comment_form">
+      <div class="text"><textarea id="comment_field" name="comment"></textarea></div>
+      <div class="send_comment">
+        <strong>Отправить</strong>
+      </div>
   </div>
 </div>
 
-<div class="info_block, unvisible">
-  <h2>Комментарии пользователей</h2>
+<div id="inf_field" class="info_block, unvisible">
+  <!-- <h2>Комментарии пользователей</h2>
     <div class="comment_card">
       <table class="comment">
 
@@ -50,9 +53,9 @@
         </tr>
       </table>
   </div>
-  <div class="comment_pagination"></div>
+  <div class="comment_pagination"></div> -->
 </div>
-
+<!--
 <div class="info_block, unvisible">
   <h2>Ваше фото понравилось:</h2>
     <div class="comment_card">
@@ -71,6 +74,6 @@
       </table>
   </div>
   <div class="comment_pagination"></div>
-</div>
+</div> -->
 
 <script src="../../public/js/gallery/gallery.js"></script>
