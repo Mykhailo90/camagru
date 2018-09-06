@@ -66,10 +66,11 @@ function ajaxPost(data) {
           side.innerHTML = response;
           var us_img = document.getElementsByClassName('users_card');
           for(var i = 0; i < us_img.length; i++) {
-            us_img[i].onclick = function(e) {
+            us_img[i].addEventListener('click', function() {
+              alert(this.getAttribute('src'));
               //Взять путь к фото этого объекта и вставить в рисунок второго объекта!
               //Сделать активной кнопку для удаления (желательно визуально это отобразить!)
-            }
+            });
           }
     }
   }
