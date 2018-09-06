@@ -43,6 +43,14 @@ class GalleryController extends Controller{
       }
     }
 
+    function show_likesAction(){
+      if (isset($_POST['img_id'])){
+      $img_id = (int) $_POST['img_id'];
+        $data = $this->model->get_last_likes($img_id);
+        exit();
+      }
+    }
+
     function add_commentAction(){
       $title = 'Camagru';
       if (isset($_POST['img_id']) && isset($_POST['comment_text'])){

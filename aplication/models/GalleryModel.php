@@ -174,18 +174,17 @@ class GalleryModel extends Model
   public function get_last_comments($data){
     $link = Registry::getInstance()->getProperty('DB');
     $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "SELECT COUNT(*) FROM img_comments";
+    $sql = "SELECT COUNT(*) FROM img_comments WHERE id_img=?";
     $result = $link->prepare($sql);
-    $result->execute();
+    $result->execute(array($data['img_id']));
     $total = $result->fetchColumn();
-
-
     $pagination_list = new Pagination($data['current_page'], $data['per_page'], $total);
+
     $link = Registry::getInstance()->getProperty('DB');
     $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $start = $pagination_list->getStart();
     $img_id = $data['img_id'];
-    $sql = "SELECT id_sender, id_receiver, comment_text, comment_time, avatar
+    $sql = "SELECT id_sender, id_receiver, comment_text, comment_time, avatar, name
             FROM img_comments, users_info
             WHERE id_img = ?
             AND id_sender = user_id
@@ -199,16 +198,45 @@ class GalleryModel extends Model
     // Добавить вывод значка лайков и количество для конкретной фото, добавить значок коментов и их количество для зареганых пользователей
     foreach ($res as $val) {
       echo '<div class="comment_card">';
-      echo '<div class="avatar" onclick="go_to('.$val['id_sender'].')">';
+      echo '<div class="avatar">';
       echo '<img width="70" data="'.$val['id_receiver'].'" src="'.$val['avatar'].'">';
-      echo '<p>' . $val['comment_time'] . "</p></div>";
-      echo '<div class="text">' . $val['comment_text'] . '</div>';
+      echo '<p>' . $val['comment_time'] . "</br>" . $val['name']. "</p></div>";
+      echo '<div class="content_center, text"><strong>' . $val['comment_text'] . '</strong></div>';
+      echo '</div>';
     }
-    echo '</div>';
+
     echo '<div class="pagin_div">';
     echo $pagination_list;
     echo "</div>";
-    // debug($res);
+  }
 
+  public function get_last_likes($img_id){
+    $link = Registry::getInstance()->getProperty('DB');
+    $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "SELECT COUNT(*) FROM img_likes WHERE img_id = $img_id";
+    $result = $link->prepare($sql);
+    $result->execute();
+    $total = $result->fetchColumn();
+    if ($total < 1){
+      echo "На данный момент фотографию еще никто не отметил!";
+      exit();
+    }
+    $sql = "SELECT avatar, name, sender_id FROM users_info, img_likes
+            WHERE img_likes.img_id = $img_id AND sender_id = user_id
+            ORDER BY like_time";
+    $result = $link->prepare($sql);
+    $result->execute();
+    $res = $result->fetchAll(PDO::FETCH_ASSOC);
+    echo "<h2>Фото отметили:</h2>";
+    echo '<div class="info_block">';
+
+    foreach ($res as $val) {
+      echo '<div class="like_card">';
+      echo '<div class="avatar_l">';
+      echo '<img width="70" src="'.$val['avatar'].'">';
+      echo '<p>' . $val['name']. "</p></div>";
+      echo '</div>';
+    }
+    echo "</div>";
   }
 }

@@ -2,8 +2,8 @@
 <div class="foto">
   <table class="comment">
     <tr class="line">
-      <td class="img_block"><div class="like_btn"><a><img src="../../public/img/like1.png" alt="likes"></a></div></td>
-      <td class="img_block"><div class="comment_btn"><a><img src="../../public/img/comments.png" alt="comment"></a></div></td>
+      <td class="img_block"><div class="like_btn"><a><img id="lbtn" src="../../public/img/like1.png" alt="likes"></a></div></td>
+      <td class="img_block"><div class="comment_btn"><a><img id="cbtn" src="../../public/img/comments.png" alt="comment"></a></div></td>
     </tr>
     <tr class="line">
       <td class="img_block"><span id="like_count"><?php echo $count_likes ?></span></td>
@@ -22,7 +22,7 @@
 <div id="form_for_comment"  class="info_block, unvisible">
   <h2>Форма отправки комментария</h2>
     <div class="comment_form">
-      <div class="text"><textarea id="comment_field" name="comment"></textarea></div>
+      <div class="text_in_form"><textarea id="comment_field" name="comment"></textarea></div>
       <div class="send_comment">
         <strong>Отправить</strong>
       </div>

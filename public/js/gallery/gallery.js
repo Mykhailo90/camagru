@@ -1,3 +1,30 @@
+var current_page_c = 1;
+var per_page_c = 1;
+var img_id = document.querySelector('#main_img').getAttribute('data');
+var current_page_l = 1;
+var per_page_l = 3;
+
+function next(){
+  current_page_c += 1;
+  ajaxPost_show_comment('current_page=' + current_page_c + '&per_page=' + per_page_c + '&img_id=' + img_id);
+}
+
+function prev(){
+  current_page_c -= 1;
+  ajaxPost_show_comment('current_page=' + current_page_c + '&per_page=' + per_page_c + '&img_id=' + img_id);
+}
+
+function start(){
+  current_page_c = 1;
+  ajaxPost_show_comment('current_page=' + current_page_c + '&per_page=' + per_page_c + '&img_id=' + img_id);
+}
+
+function finish(){
+  var total = document.querySelector('.info_block').getAttribute('data');
+  current_page_c = Math.ceil(total/per_page_c);
+  ajaxPost_show_comment('current_page=' + current_page_c + '&per_page=' + per_page_c + '&img_id=' + img_id);
+}
+
 function ajaxPost_show_comment(data){
     var request = new XMLHttpRequest();
     request.open('POST', '/gallery/show_comments', true);
@@ -59,18 +86,47 @@ function ajaxPost_comment(data){
     }
   }
 
-  var show_like = document.querySelector('.like_btn');
+  function ajaxPost_show_likes(data){
+      var request = new XMLHttpRequest();
+      request.open('POST', '/gallery/show_likes', true);
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      request.send(data);
+
+      request.onreadystatechange = function () {
+          if(request.readyState == 4 && request.status == 200) {
+            var response = request.responseText;
+            var info = document.querySelector('#inf_field');
+            if(info.classList.contains('unvisible')){
+              info.classList.remove('unvisible');
+            }
+            info.innerHTML = response;
+            // alert("Должно работать!!!");
+          }
+      }
+    }
+//-ЮЮЮЮЮЮЮюЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮ
+  var show_like = document.querySelector('#lbtn');
   show_like.addEventListener('click', function(e){
-    alert("Показать лайки через аякс!");
+    var inf = document.querySelector('#form_for_comment');
+    if(!inf.classList.contains('unvisible')){
+      inf.classList.add('unvisible');
+    }
+    // var info = document.querySelector('#inf_field');
+    // if(!info.classList.contains('unvisible')){
+    //   info.classList.add('unvisible');
+    // }
+    ajaxPost_show_likes('img_id=' + img_id);
   });
 
-  var show_comments = document.querySelector('.comment_btn');
+  var show_comments = document.querySelector('#cbtn');
   show_comments.addEventListener('click', function(e){
-  var current_page = 1;
-  var per_page = 1;
-  var img_id = document.querySelector('#main_img').getAttribute('data');
-  var inf = document.querySelector('#inf_field');
-  ajaxPost_show_comment('current_page=' + current_page + '&per_page=' + per_page + '&img_id=' + img_id);
+  // var img_id = document.querySelector('#main_img').getAttribute('data');
+  var inf = document.querySelector('#form_for_comment');
+  if(!inf.classList.contains('unvisible')){
+    inf.classList.add('unvisible');
+  }
+
+  ajaxPost_show_comment('current_page=' + current_page_c + '&per_page=' + per_page_c + '&img_id=' + img_id);
 
 
 

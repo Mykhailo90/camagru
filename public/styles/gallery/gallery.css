@@ -11,12 +11,16 @@
   width: 70%;
   margin-top: 10px;
   margin: auto;
-
+}
+td{
+  align-items: center;
 }
 h2{
   text-align: center;
   font-size: 24px;
   font-style: italic;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .img_block{
   width: 25%;
@@ -38,6 +42,7 @@ h2{
 }
 #main_img{
   width: 100%;
+  margin: auto;
 }
 
 #like_gif{
@@ -74,11 +79,7 @@ h2{
   margin: 0 auto;
   display: block;
 }
-.comment_card{
-  border: 1px solid blue;
-  display: block;
-  margin-top: 20px;
-}
+
 .text{
   height: 100%;
 }
@@ -90,7 +91,7 @@ h2{
   margin: auto;
   margin-top: 10px;
 }
-.text{
+.text_in_form{
   width: 90%;
   margin: auto;
   height: 80px;
@@ -117,14 +118,49 @@ h2{
   align-items: center;
   justify-content: center;
 }
+.info_block{
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.comment_card{
+  border: 1px solid blue;
+  display: flex;
+  margin-top: 20px;
+  width: 100%;
+  min-height: 100px;
+  height: 100%;
+}
 .avatar{
   text-align: center;
+  width: 30%;
+  float: left;
 }
-
-
+.text{
+  width: 70%;
+  text-align: center;
+  padding-top: 25px;
+  height: 100%;
+  word-wrap: break-word;
+}
+.pagin_div{
+  width: 100%;
+  text-align: center;
+}
 .send_comment:hover {
     opacity:1;
 }
+.like_card{
+  margin-top: 20;
+  text-align: center;
+  width: 100px;
+}
+.avatar_l{
+  width: 100%;
+  text-align: center;
+}
+
 @media screen and (max-width: 700px) {
     .foto{
       width: 95%;

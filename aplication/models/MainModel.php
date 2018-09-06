@@ -37,18 +37,5 @@ class MainModel extends Model
       echo '<div class="pagin_div">';
       echo $pagination_list;
       echo "</div>";
-      // debug($res);
-
-
-
-
-
-
-
-
-
-
-
-      // return $allData;
     }
 }
