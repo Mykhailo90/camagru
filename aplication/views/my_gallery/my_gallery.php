@@ -16,22 +16,26 @@
     <div class="on_load">
       <!-- <form enctype="multipart/form-data" method="post"> -->
       <label>
-        <input type="file" name="photo" multiple accept="image/*,image/jpeg">
-        <span>Загрузить фото</span>
+        <input id="loader" type="file" onchange="previewFile()" multiple accept="image/*,image/jpeg">
+        <span id="dw">Загрузить фото</span>
       </label>
     </div>
   </div>
   <div class="img_container">
-    <video id="video"></video>
-    <div class="for_finish_foto"></div>
-    <div class="for_effects_row"></div>
-    <div class="for_drowing"></div>
+    <video autoplay id="video" class="unvisible"></video>
+    <div class="for_finish_foto"><img id="finish_foto"></div>
+    <div class="for_effects_row"><img width="640" height="480" class="z_index_up" id="effect_img"></div>
+    <div class="for_loading">
+      <canvas width="640" height="480" id="my_preview"></canvas>
+    </div>
+    <div class="for_drowing">
+      <canvas width="640" height="480" id="my_canvas"></canvas>
+    </div>
   </div>
   <div class="button_panel">
     <img class="panel" id="save_btn" src="../../public/img/save.png" alt="Сохранить">
     <img class="panel" id="timer_btn" src="../../public/img/timer.png" alt="Фото с задержкой">
     <img class="panel" id="foto_btn" src="../../public/img/foto.png" alt="Фото">
-    <img class="panel" id="delete_btn" src="../../public/img/delete.png" alt="Удалить фото">
   </div>
 </div>
 

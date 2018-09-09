@@ -9,24 +9,59 @@ use PDO;
 
 class MainModel extends Model
 {
-
+                                                            // Написать запрос на проверку логина, достать значение id пользователя, и по йд проводить отбор изображений!
     public function get_data($data)
     {
       $link = Registry::getInstance()->getProperty('DB');
       $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $sql = "SELECT COUNT(*) FROM users_images";
-      $result = $link->prepare($sql);
-      $result->execute();
-      $total = $result->fetchColumn();
+      if (isset($data['user_login'])){
+        $login = $data['user_login'];
+        $sql = "SELECT user_id FROM users_info WHERE name = ?";
+        $result = $link->prepare($sql);
+        $result->execute(array($login));
+        $res = $result->fetch(PDO::FETCH_ASSOC);
+        if ($res['user_id'] == ""){
+          echo "Пользователя с данным логином не существует!";
+          exit();
+        }
+        else {
+          // получаем количество фотографий
+          $sql = "SELECT COUNT(*) FROM users_images WHERE user_id = ?";
+          $result = $link->prepare($sql);
+          $result->execute(array($res['user_id']));
+          $total = $result->fetchColumn();
+
+          if ($total == 0){
+            echo "К сожалению данный пользователь еще не опубликовал своих фотографий!";
+            exit();
+          }
+        }
+      }
+      else{
+        $sql = "SELECT COUNT(*) FROM users_images";
+        $result = $link->prepare($sql);
+        $result->execute();
+        $total = $result->fetchColumn();
+      }
 
       $pagination_list = new Pagination($data['current_page'], $data['per_page'], $total);
 
       $link = Registry::getInstance()->getProperty('DB');
       $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $start = $pagination_list->getStart();
-      $sql = "SELECT * FROM users_images ORDER BY img_time DESC LIMIT $pagination_list->perpage OFFSET $start";
-      $result = $link->prepare($sql);
-      $result->execute();
+      if (isset($login)){
+        $sql = "SELECT * FROM users_images, users_info WHERE name = ? AND users_images.user_id = users_info.user_id
+        ORDER BY img_time DESC LIMIT $pagination_list->perpage OFFSET $start";
+        $result = $link->prepare($sql);
+        $result->execute(array($login));
+      }
+      else{
+        $sql = "SELECT * FROM users_images ORDER BY img_time DESC LIMIT $pagination_list->perpage OFFSET $start";
+        $result = $link->prepare($sql);
+        $result->execute();
+      }
+
+
       $res = $result->fetchAll(PDO::FETCH_ASSOC);
       echo '<div class="img_list" data="'. $total .'">';
       // Добавить вывод значка лайков и количество для конкретной фото, добавить значок коментов и их количество для зареганых пользователей

@@ -62,5 +62,65 @@ class My_galleryModel extends Model
       echo '<div class="pagin_conteiner">';
       echo $pagination_list;
       echo "</div>";
+      echo '<div class="button_panel">
+              <img class="panel" id="delete_btn" src="../../public/img/delete.png" alt="Удалить фото">
+            </div>';
+    }
+
+    public function del_img($img_id){
+      $link = Registry::getInstance()->getProperty('DB');
+      $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+      $sql = "SELECT user_id FROM users_images WHERE img_id = ?";
+      $result = $link->prepare($sql);
+      $result->execute(array($img_id));
+      $res = $result->fetch(PDO::FETCH_ASSOC);
+
+      if($res['user_id'] != $_SESSION['user_id']){
+        echo "error";
+        exit();
+      }
+
+      $sql = "DELETE FROM users_images WHERE img_id = ?";
+      $result = $link->prepare($sql);
+      $result->execute(array($img_id));
+    }
+
+    public function get_img_path($eff_id){
+      $link = Registry::getInstance()->getProperty('DB');
+      $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+      $sql = "SELECT effect_path FROM effects_img WHERE id_effect = ?";
+      $result = $link->prepare($sql);
+      $result->execute(array($eff_id));
+      $res = $result->fetch(PDO::FETCH_ASSOC);
+      return($res['effect_path']);
+    }
+
+    function resizePng($im, $dst_width, $dst_height) {
+        $width = imagesx($im);
+        $height = imagesy($im);
+
+        $newImg = imagecreatetruecolor($dst_width, $dst_height);
+
+        imagealphablending($newImg, false);
+        imagesavealpha($newImg, true);
+        $transparent = imagecolorallocatealpha($newImg, 255, 255, 255, 127);
+        imagefilledrectangle($newImg, 0, 0, $width, $height, $transparent);
+        imagecopyresampled($newImg, $im, 0, 0, 0, 0, $dst_width, $dst_height, $width, $height);
+        return $newImg;
+    }
+
+    function save_user_foto($user_id, $fileName){
+      $link = Registry::getInstance()->getProperty('DB');
+      $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+      $sql = "INSERT INTO users_images (user_id, img_path) values(?, ?)";
+      $result = $link->prepare($sql);
+      $result->execute(array($user_id, $fileName));
+
+      $sql = "UPDATE users_info SET avatar=? WHERE user_id = ?";
+      $result = $link->prepare($sql);
+      $result->execute(array($fileName, $user_id));
     }
 }

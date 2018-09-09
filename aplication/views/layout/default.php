@@ -28,8 +28,12 @@
     <div class="header_container">
       <div class="header_top_menu">
         <div class="left_side">
-          <a href="/gallery"><img title="Поиск" src="../../public/img/search-user.png" width="40" height="40"></a>
-          <input class="header_input" type="text" placeholder="user_login" name="search" value="">
+          <?php if ($_SERVER['REQUEST_URI'] == "/"){
+            echo '<img id="search_by_login" title="Поиск" src="../../public/img/search-user.png" width="40" height="40">
+              <input class="header_input" type="text" placeholder="user_login" name="search" value="">';
+            }
+          ?>
+
         </div>
         <div class="right_side">
           <?php

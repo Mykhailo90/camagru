@@ -5,6 +5,28 @@ var small_screen = 4;
 var medium_screen = 6;
 var full_screen = 8;
 
+function search_users_by_login(){
+  var u_login = document.querySelector('.header_input').value;
+  var real_login = u_login.trim();
+  if (real_login.length > 0 && real_login.length <= 64)
+  {
+    var regexp = /^[а-яА-ЯёЁa-zA-Z0-9_+-.,@<> ()]+$/gmi;
+    if (u_login.search(regexp) >= 0){
+      // Все проверки пройдены - можно делать запрос
+      current_page = 1;
+      search_count_content();
+      ajaxPost('current_page=' + current_page + '&per_page=' + per_page + '&user_login=' + u_login);
+    }
+    else {
+      alert("В качестве Логин возможно использовать\nсимволы: [а-яА-ЯёЁa-zA-Z0-9_+-.,@<> ()]");
+    }
+  } else if (real_login.length == 0){
+    ajaxPost('current_page=' + current_page + '&per_page=' + per_page);
+  } else{
+    alert("В поле Логин не могут быть только пробельные символы, длина должна быть не более 64 символов!");
+  }
+}
+
 function new_window(img_id){
   var is_registr = document.querySelector('.is_reg').getAttribute('id');
   if (is_registr != 'undef'){
@@ -51,6 +73,8 @@ function finish(){
   ajaxPost('current_page=' + current_page + '&per_page=' + per_page);
 }
 
+
+
 function ajaxPost(data) {
     var request = new XMLHttpRequest();
     request.open('POST', '/', true);
@@ -69,4 +93,6 @@ function ajaxPost(data) {
 window.onload = function() {
   search_count_content();
   ajaxPost('current_page=' + current_page + '&per_page=' + per_page);
+  search_btn = document.querySelector('#search_by_login');
+  search_btn.addEventListener("click", search_users_by_login);
 };

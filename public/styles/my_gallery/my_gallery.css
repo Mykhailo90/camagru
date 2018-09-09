@@ -1,14 +1,12 @@
 .main_container{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 .effects{
-  /* position: absolute; */
   width: 100%;
-  margin: auto;
-  height: 100px;
-  padding: 10px;
+  height: 130px;
+  padding: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -17,13 +15,16 @@
 .modul{
   display: flex;
   flex-wrap: wrap;
-  width: 50%;
-  height: 500px;
+  width: 640px;
+  height: 600px;
   justify-content: space-between;
   border: 3px solid blue;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-top: 20px;
 }
 .main_button_panel{
-  height: 10%;
+  height: 50px;
   width: 100%;
   background-color: white;
   display: flex;
@@ -31,12 +32,12 @@
 }
 .img_container{
   width: 100%;
-  height: 80%;
-  display: relative;
+  height: 480px;
+  position: relative;
 }
 .button_panel{
   width: 100%;
-  height: 10%;
+  height: 70px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
@@ -49,19 +50,32 @@
 side{
   display: flex;
   flex-wrap: wrap;
-  width: 40%;
+  width: 400px;
   height: 100%;
-  min-height: 500px;
+  min-height: 600px;
   background-color: lightgrey;
   justify-content: space-between;
   border: 3px solid blue;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-top: 20px;
 }
 .user_img{
   width: 100%;
-  height: 85%;
+  height: 480px;
 }
 .pagin_conteiner{
   width: 100%;
+  height: 80px;
+  display: -webkit-flexbox;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: center;
 }
 .effects_img{
   width: 100px;
@@ -71,17 +85,22 @@ side{
 .effect_card{
   display: flex;
   align-items: center;
-  width: 15%;
+  width: 12%;
 }
 .on_video{
   width: 50%;
-  height: 100%;
+  height: 50px;
   background-color: blue;
-  position: relative; /* Даем возможность делать позиционирование, внутри данного элемента */
-  overflow: hidden; /* Все что выходит за пределы - скрываем */
+  display: -webkit-flexbox;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: center;
   background: purple;
-  /* border-radius: 3px; */
-  padding: 8px 4px;
   color: #fff;
   text-align: center;
 }
@@ -89,13 +108,21 @@ side{
      position: relative; /* Даем возможность делать позиционирование, внутри данного элемента */
      overflow: hidden; /* Все что выходит за пределы - скрываем */
      width: 50%; /* Задаем ширину кнопки выбора файла */
-     height: 100%; /* Задаем высоту кнопки выбора файла */
+     height: 50px; /* Задаем высоту кнопки выбора файла */
      background: brown;
-     /* border-radius: 3px; */
-     padding: 8px 4px;
+     display: -webkit-flexbox;
+     display: -ms-flexbox;
+     display: -webkit-flex;
+     display: flex;
+     -webkit-flex-align: center;
+     -ms-flex-align: center;
+     -webkit-align-items: center;
+     align-items: center;
+     justify-content: center;
      color: #fff;
      text-align: center;
 }
+
 .on_load:hover {
      background: blue;
 }
@@ -116,10 +143,11 @@ side{
      cursor: pointer;
 }
 .on_load span {
-     line-height: 36px; /* Делаем вертикальное выравнивание текста, который написан на кнопке */
+     line-height: 50px; /* Делаем вертикальное выравнивание текста, который написан на кнопке */
 }
 .img_list{
   width: 100%;
+  height: 450px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -129,27 +157,83 @@ side{
   margin: 15px;
 }
 #video{
-  /* position: absolute; */
-  /* z-index: 1; */
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  /* width: 600px;
+  height: 380px; */
+  top: 0;
+}
+#my_preview{
+  position: absolute;
+  z-index: 3;
+  width: 640px;
+  height: 480px;
+  text-align: center;
+  top: 0;
+}
+.for_finish_foto{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 640px;
+  height: 480px;
+  text-align: center;
+  top: 0;
+}
+.for_effects_row{
+  position: absolute;
+  width: 640px;
+  height: 480px;
+  text-align: center;
+  top: 0;
+  z-index: 6;
+}
+#effect_img{
+  opacity: 1;
+  height: 480px;
+  width: 640px;
+  border: none;
+  /* bottom: 0; */
+}
+.z_index_up{
+  z-index: 6;
 }
 
+#finish_foto{
+  height: 480px;
+  /* width: 600px; */
+}
+#for_drowing, #my_canvas, #for_load{
+  /* height: 480px;
+  width: 640px; */
+}
+.unvisible{
+  /* display: none; */
+  /* width: 0;
+  height: 0; */
+  position: absolute;
+  left: -2000px;
+}
+@media only screen and (max-width: 1190px) {
+  side{
+    display: flex;
+    width: 640px;
+    flex-wrap: wrap;
+    background-color: lightgrey;
+    justify-content: space-between;
+  }
+
+}
 @media only screen and (max-width: 750px) {
   .modul{
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    height: 500px;
     justify-content: space-between;
     margin-bottom: 30px;
   }
+
   side{
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    height: 100%;
-    min-height: 500px;
     background-color: lightgrey;
     justify-content: space-between;
   }
@@ -161,9 +245,10 @@ side{
   }
   .effects{
     /* position: absolute; */
-    width: 100%;
+    width: 80%;
     margin: auto;
-    height: 200px;
+    margin: auto;
+    height: 260px;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;

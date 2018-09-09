@@ -23,7 +23,18 @@ class MainController extends Controller{
 // Method for getting the data required to display the main page
     function indexAction(){
 			$title = 'Camagru';
-      if (isset($_POST['per_page']) && isset($_POST['current_page'])){
+      if (isset($_POST['per_page']) && isset($_POST['current_page']) && isset($_POST['user_login'])){
+        $data['per_page'] = (int) $_POST['per_page'];
+        $data['current_page'] = (int) $_POST['current_page'];
+        $login = trim($_POST['user_login']);
+        $login = stripslashes($login);
+        $login = strip_tags($login);
+        $login = htmlspecialchars($login);
+        $data['user_login'] = $login;
+        $data = $this->model->get_data($data);
+        exit();
+      }
+      else if (isset($_POST['per_page']) && isset($_POST['current_page'])){
         $data['per_page'] = (int) $_POST['per_page'];
         $data['current_page'] = (int) $_POST['current_page'];
         $data = $this->model->get_data($data);
