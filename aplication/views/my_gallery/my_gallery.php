@@ -14,7 +14,7 @@
   <div class="main_button_panel">
     <div class="on_video"><span>Включить камеру</span></div>
     <div class="on_load">
-      <!-- <form enctype="multipart/form-data" method="post"> -->
+
       <label>
         <input id="loader" type="file" onchange="previewFile()" multiple accept="image/*,image/jpeg">
         <span id="dw">Загрузить фото</span>

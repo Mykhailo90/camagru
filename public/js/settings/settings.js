@@ -101,7 +101,6 @@ function ajaxPost(data) {
 
     request.onreadystatechange = function () {
         if(request.readyState == 4 && request.status == 200) {
-          // var response = JSON.parse(request.responseText);
           location.reload();
         }
     }

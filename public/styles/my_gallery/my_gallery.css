@@ -105,10 +105,10 @@ side{
   text-align: center;
 }
 .on_load {
-     position: relative; /* Даем возможность делать позиционирование, внутри данного элемента */
-     overflow: hidden; /* Все что выходит за пределы - скрываем */
-     width: 50%; /* Задаем ширину кнопки выбора файла */
-     height: 50px; /* Задаем высоту кнопки выбора файла */
+     position: relative;
+     overflow: hidden;
+     width: 50%;
+     height: 50px;
      background: brown;
      display: -webkit-flexbox;
      display: -ms-flexbox;
@@ -130,10 +130,10 @@ side{
      background: #7aad55;
 }
 .on_load input[type="file"]{
-    display: none; /* Обязательно скрываем настоящий Input File */
+    display: none;
 }
 .on_load label {
-     /* Растягиваем label на всю возможную площадь блока .file-upload */
+
      display: block;
      position: absolute;
      top: 0;
@@ -143,7 +143,7 @@ side{
      cursor: pointer;
 }
 .on_load span {
-     line-height: 50px; /* Делаем вертикальное выравнивание текста, который написан на кнопке */
+     line-height: 50px;
 }
 .img_list{
   width: 100%;
@@ -158,8 +158,6 @@ side{
 }
 #video{
   position: absolute;
-  /* width: 600px;
-  height: 380px; */
   top: 0;
 }
 #my_preview{
@@ -192,7 +190,6 @@ side{
   height: 480px;
   width: 640px;
   border: none;
-  /* bottom: 0; */
 }
 .z_index_up{
   z-index: 6;
@@ -200,16 +197,8 @@ side{
 
 #finish_foto{
   height: 480px;
-  /* width: 600px; */
-}
-#for_drowing, #my_canvas, #for_load{
-  /* height: 480px;
-  width: 640px; */
 }
 .unvisible{
-  /* display: none; */
-  /* width: 0;
-  height: 0; */
   position: absolute;
   left: -2000px;
 }
@@ -244,7 +233,6 @@ side{
     flex-wrap: wrap;
   }
   .effects{
-    /* position: absolute; */
     width: 80%;
     margin: auto;
     margin: auto;

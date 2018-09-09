@@ -1,7 +1,5 @@
 .error_404{
    height:65vh;
-   /* background-color: red; */
    background-image: url(../../gifs/404new.gif);
-   /* background-size: 100% 100%; */
    background-size: cover;
 }

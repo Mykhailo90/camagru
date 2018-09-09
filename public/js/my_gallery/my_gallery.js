@@ -162,21 +162,6 @@ function make_prev(){
   }
 }
 
-// function ajaxPost_sender_img(data) {
-//     var request = new XMLHttpRequest();
-//     request.open('POST', '/my_gallery/lips', true);
-//     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//     request.send(data);
-//
-//     request.onreadystatechange = function () {
-//         if(request.readyState == 4 && request.status == 200) {
-//           // var response = JSON.parse(request.responseText);
-//           var response = request.responseText;
-//           // show_msg(response);
-//         }
-//     }
-//   }
-
 var video_btn = document.querySelector('.on_video');
 //Видео будет транслироваться в канвас, как и загружаемое изображение!
 // Склейка всегда будет принимать значение из канваса в пнг и наложку или пустоту!
@@ -191,12 +176,6 @@ timer_btn.addEventListener("click", make_foto);
 save_btn.removeEventListener("click", save_img);
 save_btn.addEventListener("click", save_error);
 
-
-  // if (document.querySelector('#video').style.display=="block"){
-  //   document.querySelector('#video').style.display="none";
-  // }
-  // else{
-    // document.querySelector('#video').style.display="block";
     document.querySelector('#effect_img').style.display="none";
     document.querySelector('#my_canvas').style.display="block";
     // document.querySelector('#for_loading').style.display="none";
@@ -232,11 +211,9 @@ save_btn.addEventListener("click", save_error);
 
 
 function snapshot(){
-       if(localMediaStream){
-         // ctx.clearRect(0, 0, 600, 380);
-          ctx.drawImage(video, 0, 0, 640, 480);
-         // ctx.scale(1, 1);
-        }
+  if(localMediaStream){
+    ctx.drawImage(video, 0, 0, 640, 480);
+  }
 }
 
 
@@ -327,14 +304,10 @@ function previewFile() {
            preview.height = 480;
            destCtx.clearRect(0, 0, 640, 480);
            destCtx.drawImage(imageLoader_img, 0, 0, 640, 480);
-           // destCtx.scale(1, 1);
        }
        imageLoader_img.src = event.target.result;
    }
-  // document.querySelector('#for_loading').style.display="none";
-  // preview.style.display="block";
 
-  // save_btn.removeEventListener("click", show_msg);
   if (file) {
     reader.readAsDataURL(file);
   } else {
@@ -350,7 +323,6 @@ function save_on_server(data){
 
   request.onreadystatechange = function () {
       if(request.readyState == 4 && request.status == 200) {
-        // var response = JSON.parse(request.responseText);
         var response = request.responseText;
         if (response != ""){
           console.log(response);

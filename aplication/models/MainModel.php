@@ -9,7 +9,7 @@ use PDO;
 
 class MainModel extends Model
 {
-                                                            // Написать запрос на проверку логина, достать значение id пользователя, и по йд проводить отбор изображений!
+
     public function get_data($data)
     {
       $link = Registry::getInstance()->getProperty('DB');

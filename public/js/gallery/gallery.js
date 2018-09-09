@@ -39,7 +39,7 @@ function ajaxPost_show_comment(data){
             info.classList.remove('unvisible');
           }
           info.innerHTML = response;
-          // alert("Комментарий успешно отправлен! Пользователь получит уведомление!");
+
         }
     }
   }
@@ -76,7 +76,6 @@ function ajaxPost_comment(data){
 
     request.onreadystatechange = function () {
         if(request.readyState == 4 && request.status == 200) {
-          // var response = request.responseText;
           var comments = document.querySelector('#comment_count');
           ald_comments = comments.textContent || comments.innerText;
           new_value_comments = +ald_comments + 1;
@@ -100,27 +99,22 @@ function ajaxPost_comment(data){
               info.classList.remove('unvisible');
             }
             info.innerHTML = response;
-            // alert("Должно работать!!!");
           }
       }
     }
-//-ЮЮЮЮЮЮЮюЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮ
+
   var show_like = document.querySelector('#lbtn');
   show_like.addEventListener('click', function(e){
     var inf = document.querySelector('#form_for_comment');
     if(!inf.classList.contains('unvisible')){
       inf.classList.add('unvisible');
     }
-    // var info = document.querySelector('#inf_field');
-    // if(!info.classList.contains('unvisible')){
-    //   info.classList.add('unvisible');
-    // }
+
     ajaxPost_show_likes('img_id=' + img_id);
   });
 
   var show_comments = document.querySelector('#cbtn');
   show_comments.addEventListener('click', function(e){
-  // var img_id = document.querySelector('#main_img').getAttribute('data');
   var inf = document.querySelector('#form_for_comment');
   if(!inf.classList.contains('unvisible')){
     inf.classList.add('unvisible');
