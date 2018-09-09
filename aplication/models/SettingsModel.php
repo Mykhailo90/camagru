@@ -61,7 +61,7 @@ class SettingsModel extends Model
 
       Ссылка для активации:
       ->->->->->->->->->->->->->->
-      <a href=\"/settings/delete/checkSum=".$token."\">Перейти</a>;
+      <a href=\"http://" . $HTTP_HOST . "/settings/delete/checkSum=".$token."\">Перейти</a>;
       ->->->->->->->->->->->->->->
 
       С уважением, автор проекта msarapii!

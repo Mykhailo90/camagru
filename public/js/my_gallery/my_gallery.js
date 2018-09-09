@@ -325,7 +325,7 @@ function save_on_server(data){
       if(request.readyState == 4 && request.status == 200) {
         var response = request.responseText;
         if (response != ""){
-          console.log(response);
+          // console.log(response);
           alert("Произошла ошибка при попытке сохранить фотографию!")
         }
         location.reload();

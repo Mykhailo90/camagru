@@ -21,11 +21,6 @@ class My_galleryModel extends Model
       $result = $link->prepare($sql);
       $result->execute();
       $res = $result->fetchAll(PDO::FETCH_ASSOC);
-
-      // Добавить вывод значка лайков и количество для конкретной фото, добавить значок коментов и их количество для зареганых пользователей
-      // foreach ($res as $val) {
-      //   echo '<div class="effect_card"><img width="80" id="' . $val['id_effect'] . 'src="'.$val['effect_path'].'"></div>';
-      // }
       $i = 1;
       foreach ($res as $val) {
       $data["obj$i"]['id'] = $val['id_effect'];

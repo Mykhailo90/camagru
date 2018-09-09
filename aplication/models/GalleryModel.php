@@ -111,7 +111,7 @@ class GalleryModel extends Model
 
 //Посылаем сообщение пользователю
 
-      @mail($receiver['email'],
+      mail($receiver['email'],
           "Внимание - ЛАЙКИ!!!",
           $message,
           "Content-Type: text/html; charset= utf-8",
@@ -130,7 +130,7 @@ class GalleryModel extends Model
 
 //Посылаем сообщение пользователю
 
-      @mail($receiver['email'],
+      mail($receiver['email'],
           "Внимание!!! Новый комментарий!",
           $message,
           "Content-Type: text/html; charset= utf-8",

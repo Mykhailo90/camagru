@@ -61,6 +61,10 @@ class RegistrationModel extends Model
 
     private function send_email_msg($user){
       $date = time();
+
+      $HTTP_HOST = $_SERVER['HTTP_HOST'];
+
+      // <a href='/autorization/?email=$user_mail&token=$token'>Click Here</a>";
       $message="Сегодня в " . date("d.m.Y", $date)." на сайте
       Camagru был зарегистрирован пользователь указавший данный email.
       Для подтверждения регистрации необходимо перейти по ссылке, указанной ниже.
@@ -70,7 +74,7 @@ class RegistrationModel extends Model
       данные будут удалены!
       Ссылка для активации:
       ->->->->->->->->->->->->->->
-      <a href=\"/registration/activate/checkSum=".$user['token']."\">Перейти</a>;
+      <a href=\"http://" . $HTTP_HOST . "/registration/activate/checkSum=".$user['token']."\">Перейти</a>;
       ->->->->->->->->->->->->->->
 
       С уважением, автор проекта msarapii!
@@ -78,7 +82,7 @@ class RegistrationModel extends Model
 
 //Посылаем сообщение пользователю
 
-      @mail($user['email'],
+      mail($user['email'],
           "Активация аккаунта",
           $message,
           "Content-Type: text/html; charset= utf-8",

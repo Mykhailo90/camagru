@@ -26,10 +26,11 @@ class DB {
 
   // Получаем параметры конфигурации доступа к базе данных
   // Get the parameters of the configuration of access to the database
-    $params = include(ROOT . '/aplication/config/db_access.php');
+    include(ROOT . '/aplication/config/database.php');
 
-    $db = new PDO($params['DB_DSN'], $params['DB_USER'], $params['DB_PASSWORD']);
-
+    require_once("aplication/config/setup.php");
+    $db = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   //Сохраняем значение в объект Regystry
   //save the value in the Regystry object
     $obj->changeProperty('DB', $db);

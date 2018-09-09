@@ -56,7 +56,7 @@ class My_galleryController extends Controller{
                 $fileName = $path_to_directory . time() . '.png';
         }
         else {
-                $path_to_directory = mkdir($path_to_directory, 0700);
+                mkdir($path_to_directory, 0700);
                 $fileName = $path_to_directory . time() . ".png";
         }
         if ($_POST['id_effect'] != "empty") {

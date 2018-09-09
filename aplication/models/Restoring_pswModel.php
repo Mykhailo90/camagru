@@ -9,12 +9,6 @@ use PDO;
 class Restoring_pswModel extends Model
 {
 
-    public function get_data()
-    {
-
-    }
-
-
     public function check_token($token){
       $link = Registry::getInstance()->getProperty('DB');
       $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -68,6 +62,7 @@ class Restoring_pswModel extends Model
 
     private function send_email_msg($email){
       $date = time();
+      $HTTP_HOST = $_SERVER['HTTP_HOST'];
       $token = $this->get_token($email);
       $message="Сегодня " . date("d.m.Y", $date)." на сайте
       Camagru был сделан запрос на восстановление пароля по данному email.
@@ -76,7 +71,7 @@ class Restoring_pswModel extends Model
 
       Ссылка для активации:
       ->->->->->->->->->->->->->->
-      <a href=\"/restoring_psw/activate/checkSum=".$token."\">Перейти</a>;
+      <a href=\"http://" . $HTTP_HOST . "/restoring_psw/activate/checkSum=".$token."\">Перейти</a>;
       ->->->->->->->->->->->->->->
 
       С уважением, автор проекта msarapii!
@@ -84,7 +79,7 @@ class Restoring_pswModel extends Model
 
 //Посылаем сообщение пользователю
 
-      @mail($user['email'],
+      mail($email,
           "Запрос на смену пароля",
           $message,
           "Content-Type: text/html; charset= utf-8",

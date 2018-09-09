@@ -28,7 +28,8 @@ Class ParentPath {
 
 // Делаем запрос к базе данных и возвращаем результат
 // Make the query to the database and return the result
-    $prepare = $db->prepare('CALL path_in_program ()');
+    $sql = "SELECT `path` FROM path";
+    $prepare = $db->prepare($sql);
     $prepare->execute();
     return $prepare->fetchAll(PDO::FETCH_COLUMN);
   }
